@@ -1,0 +1,30 @@
+*{margin: 0;padding: 0;}
+body{font: normal normal 16px/30px arial,"微软雅黑"; }
+#container{text-align: center; width: 320px; height: 568px;background: url(../img/background_1.png) repeat-y 0 0; position: relative; overflow: hidden; margin: 10px auto;}
+.myPlane{width: 66px;height: 80px;background:url(../img/myPlane.gif); position: absolute; z-index: 10; bottom: 0; left: 45%;}
+.banglane{background:url(../img/myPlaneBang.gif); }
+.npc1{width: 34px;height: 24px;background:url(../img/npc1.png); position: absolute; top: 0; left: 45%;}
+.npc2{width: 46px;height: 60px;background:url(../img/npc2.png); position: absolute; top: 0; left: 45%;}
+.npc3{width: 110px;height: 164px;background:url(../img/npc3.png); position: absolute; top: 0; left: 45%;}
+.npc4{width: 54px;height: 76px;background:url(../img/npc4.png); position: absolute; top: 0; left: 45%;}
+#container i.lv1{position: absolute; width: 6px; height: 14px; background:url(../img/bullet1.png);}
+#container i.lv2{position: absolute; width: 32px; height: 39px; background:url(../img/bullet2.png);}
+#container i.lv3{position: absolute; width: 66px; height: 62px; background:url(../img/bullet3.png);}
+#container span{display: block;position: absolute;}
+.bang1{ background:url(../img/plane1.gif); }
+.bang2{background:url(../img/plane2.gif);  }
+.bang3{background:url(../img/plane3.gif);  }
+.bang4{background:url(../img/plane4.gif); }
+
+#score{position: absolute; left:0; top: 0; padding: 0 10px;}
+
+
+#container input{ background: none; border:1px solid #333; border-radius: 15px; padding: 6px 30px; outline: none; margin-top: 100%;}
+#begin{ position: absolute; background: url(../img/begin.png) no-repeat 0 0; width: 100%; height: 100%; z-index: 999;}
+#pause{	width: 100%; height: 100%; z-index: 99; position: relative; text-align: center; display: none;}
+#info{	width: 45%; height:25%; background: #ccc; text-align: center; display: none; border:1px solid #333; border-radius: 5px;
+margin: 66% auto 0;
+position: relative; z-index: 99;
+}
+#endScroe{ height:48%; line-height: 400%; border:1px solid #333; border-width: 1px 0; font-weight: bold;}
+#container #again_btn{ margin-top:4% ; background: #fff;}

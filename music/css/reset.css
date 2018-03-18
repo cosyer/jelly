@@ -1,0 +1,32 @@
+body,html{
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	/*font-size: 14px;*/
+	font-family: "微软雅黑","Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+h1{
+	padding: 0px;
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+}
+ul,li{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.clear-fix:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.clear-fix:before{
+	content: "";
+	clear: both;
+	display: block;
+}

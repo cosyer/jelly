@@ -1,0 +1,45 @@
+﻿#wrapper
+{
+	position:absolute;
+	top:200px;
+	left:500px;
+	padding-left:200px;
+	padding-right:125px;
+	height: 80px; 
+}
+
+#equal
+{
+	position:absolute;
+	top:236px;
+	left:791px;
+	width: 65px;
+}
+
+#jia
+{
+	position:absolute;
+}
+#jian
+{
+	position:relative;
+	left:35px;
+}
+#cheng
+{
+	position:relative;
+}
+#chu
+{
+	position:relative;
+	left:35px;
+ 	top:-35px;
+}
+ 
+#pic
+{
+	position:absolute;
+	top:170px;
+	left:460px;
+}
+ 

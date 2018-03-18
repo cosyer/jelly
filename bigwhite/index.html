@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>大白</title>
+		<style type="text/css">
+			body{
+				background: #595959;
+			}
+			<style>
+
+#bai{
+	margin:0 auto;
+	height: 600px;
+	/*隐藏溢出*/
+	overflow: hidden;
+}
+#head{
+	height: 64px;
+	width: 100px;
+	/*画圆*/
+	border-radius: 50%;
+	background: #fff;
+	margin: 0 auto;
+	margin-bottom: -20px;
+
+	border-bottom: 5px solid #e0e0e0;
+
+	/*元素的堆叠顺序*/
+	z-index: 100;
+
+	position: relative;
+}
+
+#eye,#eye2{
+	width: 11px;
+	height: 13px;
+	background: #282828;
+	border-radius: 50%;
+	position: relative;
+	top: 30px;
+	left: 27px;
+
+	/*旋转元素*/
+	transform: rotate(8deg);
+}
+#eye2{
+	/*对称旋转*/
+	transform: rotate(-8deg);
+	left: 69px;
+	top: 17px;
+}
+#mouth{
+	width: 38px;
+	height: 1.7px;
+	background: #282828;
+	position: relative;
+	top:10px;
+	left: 34px;
+}
+
+
+#torso,#belly{
+	margin: 0 auto;
+	height: 200px;
+	width: 180px;
+	background: #fff;
+	border-radius: 47%;
+
+	border: 5px solid #e0e0e0;
+	border-top: none;
+	z-index: 1;
+}
+#belly{
+	height: 300px;
+	width: 245px;
+	margin-top: -140px;
+	z-index: 5;
+}
+#heart{
+	width: 25px;
+	height: 25px;
+	border-radius: 50px;
+	position: relative;
+	/*添加阴影*/
+	box-shadow: 2px 5px 2px #ccc inset;
+
+	right: -115px;
+	top: 40px;
+	z-index: 111;
+	border: 1px solid #ccc;
+}
+
+
+#left-arm,#right-arm{
+	height: 270px;
+	width: 120px;
+	border-radius: 50%;
+	background: #fff;
+	margin: 0 auto;
+	position: relative;
+	top: -350px;
+	left: -100px;
+	transform: rotate(200deg);
+	z-index: -1;
+}
+#right-arm{
+	transform: rotate(-200deg);
+	left: 100px;
+	top: -620px;
+}
+
+
+#l-bigfinger,#r-bigfinger{
+	height: 50px;
+	width: 20px;
+	border-radius: 50%;
+	background: #fff;
+	position: relative;
+	top: -35px;
+	left: 39px;
+	transform: rotate(-50deg);
+}
+#r-bigfinger{
+	left: 63px;
+	transform: rotate(50deg);
+}
+#l-smallfinger,#r-smallfinger{
+	height: 35px;
+	width: 15px;
+	border-radius: 50%;
+	background: #fff;
+	position: relative;
+	top: -70px;
+	left: 25px;
+	transform: rotate(-40deg);
+}
+#r-smallfinger{
+	background: #fff;
+	transform: rotate(40deg);
+	top: -70px;
+	left: 80px;
+}
+
+
+#left-leg,#right-leg{
+	height: 170px;
+	width: 90px;
+	border-radius: 40% 30% 10px 45%;
+	background: #fff;
+	position: relative;
+	top: -640px;
+	left: -45px;
+	transform: rotate(-1deg);
+	margin: 0 auto;
+	z-index: -2;
+
+}
+#right-leg{
+	border-radius: 40% 30% 45% 10px;
+	position: relative;
+	margin: 0 auto;
+	top: -810px;
+	left: 50px;
+	transform: rotate(1deg);
+}
+</style>
+		</style>
+	</head>
+
+	<body>
+		<div id="bai">
+			<!--头部-->
+			<div id="head">
+				<div id="eye"></div>
+				<div id="eye2"></div>
+				<div id="mouth"></div>
+			</div>
+
+			<!--躯干-->
+			<div id="torso">
+				<div id="heart"></div>
+			</div>
+			<div id="belly">
+				<div id="cover"></div> <!--和躯干连接处-->
+			</div>
+
+			<!--左臂-->
+			<div id="left-arm">
+				<div id="l-bigfinger"></div>
+				<div id="l-smallfinger"></div>
+			</div>
+
+			<!--右臂-->
+			<div id="right-arm">
+				<div id="r-bigfinger"></div>
+				<div id="r-smallfinger"></div>
+			</div>
+
+			<!--左腿-->
+			<div id="left-leg"></div>
+
+			<!--右腿-->
+			<div id="right-leg"></div>
+	</body>
+</html>

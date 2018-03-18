@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>幻灯片</title>
+    <link rel="stylesheet" href="./css/reset.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+        /*img{
+        height: 300px;
+        width: 400px;
+        -webkit-box-reflect:left 10px -webkit-linear-gradient(0deg,transparent,transparent 60%,red);
+        position: absolute;
+        top:0px;
+        left:500px;
+        }*/
+
+        body {
+            background-color: #fff;
+            color: #555;
+            -webkit-font-smoothing: antialiased;
+            /*字体抗锯齿*/
+        }
+
+        .slider {
+            width: 100%;
+            height: 513px;
+        }
+
+        .slider .main {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .slider .main .main-item {
+            position: absolute;
+            top: 0;
+            right: 50%;
+            width: 100%;
+            height: 100%;
+            transition: all 1s;
+            opacity: 0;
+        }
+
+        .slider .main .main-item img {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slider .main .main-item .caption {
+            position: absolute;
+            left: 30%;
+            top: 20%;
+            z-index: 2;
+        }
+
+        .slider .main .main-item .caption h2 {
+            margin-left: 40px;
+            transition: all .8s 1s;
+        }
+
+        .slider .main .main-item .caption h3 {
+            margin-left: -40px;
+            transition: all .8s 1s;
+        }
+
+        .slider .ctrl {
+            text-align: center;
+            height: 13px;
+        }
+
+        .slider .ctrl .ctrl-item {
+            display: inline-block;
+            width: 150px;
+            height: 100%;
+            background-color: #666;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+            position: relative;
+            vertical-align: top;
+            cursor: pointer;
+            transition: all 0.8s;
+        }
+
+        .slider .ctrl .ctrl-item img {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            -webkit-box-reflect: below 0px -webkit-linear-gradient(transparent, transparent 50%, rgba(0, 0, 0, 0.3));
+            opacity: 0;
+            transition: all 0.8s;
+        }
+
+        .slider .ctrl .ctrl-item:hover {
+            background-color: #ddd;
+        }
+
+        .slider .ctrl .ctrl-item:hover img {
+            bottom: 13px;
+            opacity: 1;
+        }
+
+        .slider .main .main-item-active {
+            right: 0;
+            opacity: 1;
+        }
+
+        .slider .ctrl .ctrl-item-active {
+            background-color: #000;
+        }
+
+        .slider .main .main-item-active .caption h2 {
+            margin-left: 0;
+        }
+
+        .slider .main .main-item-active .caption h3 {
+            margin-left: 0;
+        }
+
+        .slider .main .main-item-bg {
+            right: 0;
+            opacity: 1;
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider">
+        <ul class="main">
+            <li class="main-item main-item-active">
+                <div class="caption">
+                    <h2>坦格利安家族</h2>
+                    <h3>血火同源</h3>
+                </div>
+                <img src="./imgs/1.jpg">
+            </li>
+            <li class=main-item>
+                <div class="caption">
+                    <h2>史塔克家族</h2>
+                    <h3>凛冬将至</h3>
+                </div>
+                <img src="./imgs/2.jpg">
+            </li>
+            <li class=main-item>
+                <div class="caption">
+                    <h2>兰尼斯特家族</h2>
+                    <h3>听我怒吼</h3>
+                </div>
+                <img src="./imgs/3.jpg">
+            </li>
+            <li class=main-item>
+                <div class="caption">
+                    <h2>拜拉席恩家族</h2>
+                    <h3>怒火燎原</h3>
+                </div>
+                <img src="./imgs/4.jpg">
+            </li>
+            <li class=main-item>
+                <div class="caption">
+                    <h2>葛雷乔伊家族</h2>
+                    <h3>强取胜于苦耕</h3>
+                </div>
+                <img src="./imgs/5.jpg">
+            </li>
+            <li class=main-item>
+                <div class="caption">
+                    <h2>徒利家族</h2>
+                    <h3>家族、责任、光荣流传</h3>
+                </div>
+                <img src="./imgs/6.jpg">
+            </li>
+            <li class=main-item>
+                <div class="caption">
+                    <h2>艾林家族</h2>
+                    <h3>高如荣誉</h3>
+                </div>
+                <img src="./imgs/7.jpg">
+            </li>
+            <li class="main-item main-item-bg">
+                <img src="./imgs/1.jpg">
+            </li>
+        </ul>
+        <div class="ctrl">
+            <div class="ctrl-item ctrl-item-active"><img src="./imgs/1.jpg" /></div>
+            <div class="ctrl-item"><img src="./imgs/2.jpg" /></div>
+            <div class="ctrl-item"><img src="./imgs/3.jpg" /></div>
+            <div class="ctrl-item"><img src="./imgs/4.jpg" /></div>
+            <div class="ctrl-item"><img src="./imgs/5.jpg" /></div>
+            <div class="ctrl-item"><img src="./imgs/6.jpg" /></div>
+            <div class="ctrl-item"><img src="./imgs/7.jpg" /></div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="./js/lib/jquery-3.0.0.js"></script>
+    <script type="text/javascript">
+        function swicthImg(index) {
+            var $ctrlItem = $(".ctrl-item");
+            $ctrlItem.removeClass("ctrl-item-active");
+            $ctrlItem.eq(index).addClass("ctrl-item-active");
+            var $mainItem = $(".main-item");
+            var imgSrc = $mainItem.parent().find(".main-item-active").find("img").attr("src");
+            $mainItem.removeClass("main-item-active");
+            $mainItem.eq(index).addClass("main-item-active");
+            $(".main-item-bg").find("img").attr("src", imgSrc);
+        }
+        $(".ctrl").on("click", ".ctrl-item", function() {
+            var $this = $(this);
+            swicthImg($this.index());
+        });
+    </script>
+</body>
+</html>

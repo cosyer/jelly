@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>clock</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="" rel="stylesheet">
+	<style>
+		.clocks {
+			height: 500px;
+			margin: 25px auto;
+			position: relative;
+			width: 500px;
+
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<h2>HTML5 时钟 你好 我这是在写代码</h2>
+	</header>
+	<div class="clocks">
+
+		<canvas id="canvas-1" height="200" width="200"></canvas>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<script type="text/javascript">
+		// inner variables
+		var canvas, ctx;
+		var clockRadius = 100;
+		var clockImage;
+
+
+		// draw functions :
+		function clear() { // clear canvas function
+			ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		}
+		function drawScene() { // main drawScene function
+			clear(); // clear canvas
+			// get current time
+			var date = new Date();
+			var hours = date.getHours();
+			var minutes = date.getMinutes();
+			var seconds = date.getSeconds();
+			hours = hours > 12 ? hours - 12 : hours;
+			var hour = hours + minutes / 60;
+			var minute = minutes + seconds / 60;
+
+			// save current context
+			ctx.save();
+
+			// draw clock image (as background)
+			// ctx.drawImage(clockImage, 0, 0, ctx.canvas.width, ctx.canvas.height);
+
+
+
+			ctx.translate(canvas.width / 2, canvas.height / 2);
+			ctx.beginPath();
+
+			// draw numbers
+			ctx.font = '12px Arial';
+			ctx.fillStyle = '#000';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
+
+			for (var n = 1; n <= 12; n++) {
+				var theta = (n - 3) * (Math.PI * 2) / 12;
+				var x = clockRadius * Math.cos(theta) * 0.7;
+				var y = clockRadius * Math.sin(theta) * 0.7;
+				ctx.fillText(n, x, y);
+			}
+
+			//draw hour
+			ctx.save();
+			var theta = (hour - 3) * 2 * Math.PI / 12;
+			ctx.rotate(theta);
+			ctx.beginPath();
+			ctx.moveTo(-15, -5);
+			ctx.lineTo(-15, 5);
+			ctx.lineTo(clockRadius * 0.5, 1);
+			ctx.lineTo(clockRadius * 0.5, -1);
+			ctx.fill();
+			ctx.restore();
+
+			//draw minute
+			ctx.save();
+			var theta = (minute - 15) * 2 * Math.PI / 60;
+			ctx.rotate(theta);
+			ctx.beginPath();
+			ctx.moveTo(-15, -4);
+			ctx.lineTo(-15, 4);
+			ctx.lineTo(clockRadius * 0.6, 1);
+			ctx.lineTo(clockRadius * 0.6, -1);
+			ctx.fill();
+			ctx.restore();
+
+			//draw second
+			ctx.save();
+			var theta = (seconds - 15) * 2 * Math.PI / 60;
+			ctx.rotate(theta);
+			ctx.beginPath();
+			ctx.moveTo(-15, -3);
+			ctx.lineTo(-15, 3);
+			ctx.lineTo(clockRadius * 0.7, 1);
+			ctx.lineTo(clockRadius * 0.7, -1);
+			ctx.fillStyle = 'red';
+
+			ctx.fill();
+			ctx.restore();
+
+			ctx.restore();
+		}
+
+		// initialization
+		$(function() {
+			canvas = document.getElementById('canvas-1');
+			ctx = canvas.getContext('2d');
+
+			// var width = canvas.width;
+			// var height = canvas.height;
+
+			clockImage = new Image();
+			clockImage.src = 'http://static.oschina.net/uploads/space/2012/0712/125855_nnla_89964.png';
+
+			setInterval(drawScene, 1000); // loop drawScene
+		});
+	</script>
+</body>
+
+</html>

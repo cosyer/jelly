@@ -1,0 +1,9 @@
+html,body,h2,p{
+	margin:0px;
+	padding:0px;
+	font-family: "微软雅黑";
+}
+a{
+	text-decoration: none;
+	color: #777;
+}

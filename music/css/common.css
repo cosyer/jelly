@@ -1,0 +1,16 @@
+/*居中*/
+
+.music-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    s
+}
+
+/*放大*/
+
+.music-largen {
+    transform: translate(-50%, -50%) scale(1.2, 1.2);
+}

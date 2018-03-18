@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>仿微博过渡效果</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.wrap {
+			width: 350px;
+			margin: 0 auto;
+			position: relative;
+		}
+
+		.wrap ul {
+			padding: 0;
+			margin: 0;
+			list-style-type: none;
+			overflow: hidden;
+		}
+
+		.wrap ul li {
+			width: 70px;
+			float: left;
+			padding: 10px 0;
+			font-weight:bold;
+			text-align: center;
+		}
+		.wrap ul li:hover{
+            cursor:pointer;
+		}
+
+		p {
+			background: linear-gradient(to right, darkorange, orangered);
+			width: 20px;
+			height: 3px;
+			border-radius: 10px;
+			position: relative;
+			left: 25px;
+			transition-duration: 0.5s;
+			transition-timing-function: ease;
+		}
+
+		.active {
+			background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(orangered), to(darkorange));
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<ul>
+			<li class="active">诚信</li>
+			<li>敬业</li>
+			<li>友善</li>
+			<li>和谐</li>
+		</ul>
+		<p></p>
+	</div>
+</body>
+<script type="text/javascript">
+	var slides = document.getElementsByTagName('p');
+	var uls = document.querySelectorAll('.wrap ul');
+	var lis = uls[0].querySelectorAll('li');
+
+	for (var j = 0; j < lis.length; j++) {
+		lis[j].j = j; // 存储每一个li
+		lis[j].onclick = function () {
+			for (var i = 0; i < lis.length; i++) {
+				lis[i].className = "";
+			}
+			lis[this.j].className = "active";
+			var that = this.j;
+			var _this = 0;
+			// var w2Before = 70;
+		
+			/*
+			 * 从左到右：定义下标，初始改变宽度，跨越的距离，回收前过渡宽度，回收结束宽度，触发时间1，触发时间2;
+			 * 2的时间要比1慢150ms+好些;
+			 * 此处Xdistance距离默认70，若要修改距离则要重新按wrap计算;
+			 */
+			function setSlide(index, w1Normal, Xdistance, w2Before, w2After, t1, t2) {
+				slides[_this].style.width = w1Normal * index + "px";
+				setTimeout(function () {
+					slides[_this].style.transform = "translateX(" + Xdistance * index + "px" + ")";
+					slides[_this].style.width = w2Before + "px";
+				}, t1)
+				setTimeout(function () {
+					slides[_this].style.width = w2After + "px";
+				}, t2)
+			}
+
+			// 触发动画
+			switch (that) {
+				case 0:
+					setSlide(0, 50, 70, 70, 20, 100, 250)
+					break;
+				case 1:
+					setSlide(1, 50, 70, 70, 20, 100, 250)
+					break;
+				case 2:
+					setSlide(2, 50, 70, 70, 20, 100, 250)
+					break;
+				case 3:
+					setSlide(3, 50, 70, 70, 20, 100, 250)
+					break;
+			}
+		}
+	}
+</script>
+</html>

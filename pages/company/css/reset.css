@@ -1,0 +1,29 @@
+body,html{
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	/*font-size: 14px;*/
+	font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+h1{
+	padding: 0px;
+	margin: 0px;
+}
+a{
+	text-decoration: none;
+}
+ul{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+.wrap-content{
+	margin: 0 auto;
+	width: 1250px;
+}
+.warp-content:after{
+	content: "";
+	display: block;
+	clear: both;
+}

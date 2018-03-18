@@ -1,0 +1,897 @@
+@-webkit-keyframes eye {
+  /* line 2, main.less */
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  /* line 5, main.less */
+  20% {
+    -webkit-transform: scale(1, 0.1);
+            transform: scale(1, 0.1);
+  }
+  /* line 9, main.less */
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+@keyframes eye {
+  /* line 2, main.less */
+  0% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+  /* line 5, main.less */
+  20% {
+    -webkit-transform: scale(1, 0.1);
+            transform: scale(1, 0.1);
+  }
+  /* line 9, main.less */
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+/* line 13, main.less */
+body {
+  background: #ffef5e;
+}
+/* line 16, main.less */
+body,
+div {
+  margin: 0;
+  padding: 0;
+  background: #ffef5e;
+}
+/* line 21, main.less */
+.border {
+  border: 1px solid #152131;
+}
+/* line 24, main.less */
+.main {
+  position: relative;
+  width: 700px;
+  margin: 50px auto;
+}
+/* line 29, main.less */
+.me {
+  position: absolute;
+  top: 250px;
+  left: 100px;
+  z-index: 10;
+}
+/* line 34, main.less */
+.me .hairs {
+  background: #152131;
+  width: 190px;
+  height: 250px;
+  border-radius: 50% 50% 0 0;
+  left: -30px;
+  top: -50px;
+  position: absolute;
+  overflow: hidden;
+}
+/* line 43, main.less */
+.me .hairs:after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  background: #ffef5e;
+  top: 120px;
+}
+/* line 51, main.less */
+.me .hairs .hair {
+  width: 35px;
+  height: 45px;
+  background: #152131;
+  position: absolute;
+  z-index: 1;
+  -webkit-transform: rotate(70deg) scale(1) skew(44deg) translate(8px);
+      -ms-transform: rotate(70deg) scale(1) skew(44deg) translate(8px);
+          transform: rotate(70deg) scale(1) skew(44deg) translate(8px);
+}
+/* line 58, main.less */
+.me .hairs .hair.hair1 {
+  top: 17px;
+  left: 27px;
+}
+/* line 62, main.less */
+.me .hairs .hair.hair2 {
+  top: 8px;
+  left: 52px;
+}
+/* line 66, main.less */
+.me .hairs .hair.hair3 {
+  top: 4px;
+  left: 73px;
+}
+/* line 70, main.less */
+.me .hairs .hair.hair4 {
+  top: 0;
+  left: 90px;
+}
+/* line 74, main.less */
+.me .hairs .hair.hair5 {
+  top: 4px;
+  left: 108px;
+}
+/* line 78, main.less */
+.me .hairs .hair.hair6 {
+  top: 8px;
+  left: 125px;
+}
+/* line 82, main.less */
+.me .hairs .hair.hair7 {
+  top: 17px;
+  right: 17px;
+}
+/* line 88, main.less */
+.me .face {
+  background: #fbdac7;
+  width: 130px;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  border-radius: 20px 20px 50px 50px;
+  border: 1px solid #152131;
+}
+/* line 95, main.less */
+.me .face:after {
+  content: "";
+  width: 14px;
+  height: 10px;
+  background: #fbdac7;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  margin-left: -7px;
+  border: 1px solid #152131;
+}
+/* line 107, main.less */
+.me .face .brow {
+  width: 42px;
+  height: 10px;
+  background: #152131;
+  position: absolute;
+  top: 26px;
+  border-radius: 50%;
+}
+/* line 114, main.less */
+.me .face .brow:after {
+  content: "";
+  background: #fbdac7;
+  position: absolute;
+  width: 50px;
+  height: 10px;
+  top: 1px;
+  border-radius: 50%;
+}
+/* line 123, main.less */
+.me .face .brow.left-brow {
+  left: 18px;
+  -webkit-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+/* line 127, main.less */
+.me .face .brow.right-brow {
+  right: 14px;
+  -webkit-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+/* line 132, main.less */
+.me .face .eye {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+  top: 40px;
+  z-index: 2;
+}
+/* line 140, main.less */
+.me .face .eye.left-eye {
+  left: 32%;
+}
+/* line 143, main.less */
+.me .face .eye.right-eye {
+  right: 32%;
+}
+/* line 148, main.less */
+.me .face .blusher {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f79c99;
+  position: absolute;
+  top: 70px;
+}
+/* line 155, main.less */
+.me .face .blusher.left-blusher {
+  left: 8px;
+}
+/* line 158, main.less */
+.me .face .blusher.right-blusher {
+  right: 8px;
+}
+/* line 162, main.less */
+.me .face .mouth {
+  border: 1px solid #152131;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: #d96b6e;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  border-radius: 50%;
+}
+/* line 172, main.less */
+.me .face .mouth:after {
+  content: "";
+  width: 60px;
+  height: 30px;
+  background: #fbdac7;
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  border-radius: 30%;
+}
+/* line 183, main.less */
+.me .face .ear {
+  width: 10px;
+  height: 20px;
+  background: #fbdac7;
+  position: absolute;
+  top: 30px;
+  z-index: 2;
+}
+/* line 190, main.less */
+.me .face .ear.left-ear {
+  left: -11px;
+  border-radius: 5px 0 0 10px;
+}
+/* line 194, main.less */
+.me .face .ear.right-ear {
+  right: -11px;
+  border-radius: 0 5px 10px 0;
+}
+/* line 200, main.less */
+.me .clothes {
+  background: #fff;
+  width: 70px;
+  height: 80px;
+  position: absolute;
+  top: 112px;
+  left: 31px;
+  z-index: 2;
+  border-radius: 30% 30% 10px 10px;
+  overflow: hidden;
+  border: 1px solid #152131;
+}
+/* line 211, main.less */
+.me .clothes .sleeve {
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  border-radius: 10px;
+}
+/* line 231, main.less */
+.me .clothes .collar {
+  z-index: 3;
+  position: absolute;
+  border: 1px solid #152131;
+  width: 20px;
+  height: 10px;
+  background: #fff;
+}
+/* line 238, main.less */
+.me .clothes .collar.left-collar {
+  left: 12px;
+  -webkit-transform: rotate(50deg);
+      -ms-transform: rotate(50deg);
+          transform: rotate(50deg);
+}
+/* line 242, main.less */
+.me .clothes .collar.right-collar {
+  right: 12px;
+  -webkit-transform: rotate(-50deg);
+      -ms-transform: rotate(-50deg);
+          transform: rotate(-50deg);
+}
+/* line 247, main.less */
+.me .clothes .straps {
+  z-index: 2;
+  position: absolute;
+  width: 6px;
+  height: 100px;
+  background: #e9003a;
+  border: 1px solid #152131;
+}
+/* line 254, main.less */
+.me .clothes .straps.left-straps {
+  left: 12px;
+}
+/* line 257, main.less */
+.me .clothes .straps.right-straps {
+  right: 12px;
+}
+/* line 262, main.less */
+.me .arm {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #152131;
+  z-index: 1;
+  position: absolute;
+  top: 115px;
+  z-index: 0;
+}
+/* line 272, main.less */
+.me .arm.left-arm {
+  left: 10px;
+}
+/* line 274, main.less */
+.me .arm.left-arm:after {
+  content: "";
+  position: absolute;
+  background: #ffef5e;
+  width: 60px;
+  height: 60px;
+  left: 12px;
+  top: 5px;
+  border-radius: 50%;
+  border: 1px solid #152131;
+}
+/* line 286, main.less */
+.me .arm.right-arm {
+  left: 52px;
+}
+/* line 288, main.less */
+.me .arm.right-arm:after {
+  content: "";
+  position: absolute;
+  background: #ffef5e;
+  width: 60px;
+  height: 60px;
+  left: -4px;
+  top: 5px;
+  border-radius: 50%;
+  border: 1px solid #152131;
+}
+/* line 301, main.less */
+.me .belt {
+  background: #ed023a;
+  border: 1px solid #152131;
+  height: 10px;
+  left: 31px;
+  position: absolute;
+  top: 182px;
+  width: 70px;
+  z-index: 3;
+}
+/* line 311, main.less */
+.me .skirt {
+  background: #ed023a;
+  background: none;
+  border-color: #e9003a transparent;
+  -webkit-border-image: none;
+       -o-border-image: none;
+          border-image: none;
+  border-style: solid;
+  border-width: 0px 30px 50px;
+  height: 0;
+  left: 1px;
+  position: absolute;
+  top: 194px;
+  width: 72px;
+  z-index: 3;
+  border-radius: 0 0 50% 50%;
+}
+/* line 326, main.less */
+.me .skirt .line {
+  width: 1px;
+  height: 30px;
+  position: absolute;
+  background: #000;
+  top: 10px;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+/* line 333, main.less */
+.me .skirt .line.line1 {
+  left: 10px;
+  -webkit-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+/* line 337, main.less */
+.me .skirt .line.line2 {
+  left: 25px;
+  -webkit-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+/* line 341, main.less */
+.me .skirt .line.line3 {
+  left: 35px;
+}
+/* line 344, main.less */
+.me .skirt .line.line4 {
+  right: 25px;
+  -webkit-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+/* line 348, main.less */
+.me .skirt .line.line5 {
+  right: 10px;
+  -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+/* line 354, main.less */
+.me .leg {
+  width: 12px;
+  height: 40px;
+  background: #fadbc7;
+  border: 1px solid #152131;
+  position: absolute;
+  top: 220px;
+  z-index: 2;
+}
+/* line 362, main.less */
+.me .leg.left-leg {
+  left: 40px;
+}
+/* line 365, main.less */
+.me .leg.right-leg {
+  left: 78px;
+}
+/* line 368, main.less */
+.me .leg:after {
+  content: '';
+  width: 12px;
+  height: 16px;
+  background: #fff;
+  border: 1px solid #152131;
+  border-bottom: 0;
+  top: 40px;
+  left: -1px;
+  position: absolute;
+}
+/* line 380, main.less */
+.me .stockings {
+  width: 28px;
+  height: 12px;
+  background: #fff;
+  border: 1px solid #152131;
+  position: absolute;
+  z-index: 1;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+/* line 388, main.less */
+.me .stockings.left-stockings {
+  left: 21px;
+  top: 275px;
+  -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  border-radius: 50% 0 0 50%;
+}
+/* line 394, main.less */
+.me .stockings.right-stockings {
+  left: 83px;
+  top: 265px;
+  -webkit-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg);
+  border-radius: 0 50% 50% 0;
+}
+/* line 401, main.less */
+.me .shoes {
+  width: 40px;
+  height: 17px;
+  position: absolute;
+  z-index: 0;
+  background: #a23030;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+  border-radius: 50%;
+}
+/* line 409, main.less */
+.me .shoes.left-shoes {
+  left: 13px;
+  top: 280px;
+  -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+  border-radius: 50% 0 0 50%;
+}
+/* line 415, main.less */
+.me .shoes.right-shoes {
+  left: 81px;
+  top: 267px;
+  -webkit-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg);
+  border-radius: 0 50% 50% 0;
+}
+/* line 424, main.less */
+.grandpa {
+  position: absolute;
+  top: 40px;
+  left: 280px;
+  z-index: 10;
+  width: 126px;
+}
+/* line 430, main.less */
+.grandpa .hairs {
+  position: absolute;
+  z-index: 3;
+  width: 126px;
+}
+/* line 435, main.less */
+.grandpa .hairs .hair {
+  background: #152131;
+  width: 1px;
+  height: 5px;
+  position: absolute;
+}
+/* line 440, main.less */
+.grandpa .hairs .hair.hair1 {
+  left: 40px;
+  top: 12px;
+}
+/* line 444, main.less */
+.grandpa .hairs .hair.hair2 {
+  left: 50px;
+  top: 8px;
+}
+/* line 448, main.less */
+.grandpa .hairs .hair.hair3 {
+  left: 62px;
+  top: 5px;
+}
+/* line 452, main.less */
+.grandpa .hairs .hair.hair4 {
+  right: 50px;
+  top: 8px;
+}
+/* line 456, main.less */
+.grandpa .hairs .hair.hair5 {
+  right: 40px;
+  top: 12px;
+}
+/* line 462, main.less */
+.grandpa .ear {
+  width: 20px;
+  height: 20px;
+  background: #f8bb9f;
+  border: 1px solid #152131;
+  position: absolute;
+  top: 90px;
+  border-radius: 50%;
+  z-index: 1;
+}
+/* line 471, main.less */
+.grandpa .ear.left-ear {
+  left: -10px;
+}
+/* line 474, main.less */
+.grandpa .ear.right-ear {
+  right: -10px;
+}
+/* line 478, main.less */
+.grandpa .header {
+  top: 10px;
+  position: absolute;
+  width: 126px;
+  height: 180px;
+  background: #f8bb9f;
+  display: block;
+  border-radius: 175% 175% 150% 150%;
+  z-index: 2;
+  border: 1px solid #152131;
+}
+/* line 488, main.less */
+.grandpa .header:after {
+  background: #f8bb9f;
+  bottom: -12px;
+  content: "";
+  height: 10px;
+  left: 50%;
+  margin-left: -7px;
+  position: absolute;
+  width: 14px;
+  border: 1px solid #152131;
+}
+/* line 499, main.less */
+.grandpa .header .bang {
+  background: #152131;
+  width: 1px;
+  height: 3px;
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+}
+/* line 506, main.less */
+.grandpa .header .bang.bang1 {
+  left: 50px;
+  -webkit-transform: rotate(-20deg);
+      -ms-transform: rotate(-20deg);
+          transform: rotate(-20deg);
+}
+/* line 510, main.less */
+.grandpa .header .bang.bang2 {
+  left: 63px;
+}
+/* line 513, main.less */
+.grandpa .header .bang.bang3 {
+  right: 50px;
+  -webkit-transform: rotate(20deg);
+      -ms-transform: rotate(20deg);
+          transform: rotate(20deg);
+}
+/* line 518, main.less */
+.grandpa .header .wrinkle {
+  position: absolute;
+  height: 1px;
+  background: #152131;
+  border-radius: 50%;
+}
+/* line 523, main.less */
+.grandpa .header .wrinkle.wrinkle1 {
+  top: 30px;
+  width: 30px;
+  left: 48px;
+}
+/* line 528, main.less */
+.grandpa .header .wrinkle.wrinkle2 {
+  top: 40px;
+  width: 20px;
+  left: 53px;
+}
+/* line 534, main.less */
+.grandpa .header .brow {
+  position: absolute;
+  top: 60px;
+  width: 50px;
+  height: 30px;
+  border-radius: 50%;
+  background: #152131;
+}
+/* line 541, main.less */
+.grandpa .header .brow:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 30px;
+  background: #f8bb9f;
+  top: 1px;
+  left: -1px;
+}
+/* line 551, main.less */
+.grandpa .header .brow.left-brow {
+  left: 20px;
+  -webkit-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+/* line 555, main.less */
+.grandpa .header .brow.right-brow {
+  left: 67px;
+  -webkit-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+          transform: rotate(10deg);
+}
+/* line 560, main.less */
+.grandpa .header .eye {
+  position: absolute;
+  top: 80px;
+  width: 30px;
+  height: 50px;
+  border-radius: 50%;
+  background: #152131;
+}
+/* line 568, main.less */
+.grandpa .header .eye:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 34px;
+  height: 55px;
+  background: #f8bb9f;
+  top: 1px;
+  left: 0px;
+}
+/* line 578, main.less */
+.grandpa .header .eye.left-eye {
+  left: 20px;
+  -webkit-transform: rotate(30deg);
+      -ms-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+/* line 583, main.less */
+.grandpa .header .eye.right-eye {
+  left: 80px;
+  top: 79px;
+  -webkit-transform: rotate(-40deg) rotateY(160deg);
+          transform: rotate(-40deg) rotateY(160deg);
+}
+/* line 589, main.less */
+.grandpa .header .nose {
+  width: 6px;
+  height: 22px;
+  position: absolute;
+  top: 105px;
+  left: 58px;
+  background: #f8bb9f;
+  z-index: 2;
+  border: 1px solid #152131;
+  border-radius: 50%;
+}
+/* line 599, main.less */
+.grandpa .header .nose:after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 22px;
+  top: -5px;
+  left: 1px;
+  background: #f8bb9f;
+}
+/* line 609, main.less */
+.grandpa .header .mouth {
+  border: 1px solid #152131;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: #d96b6e;
+  position: absolute;
+  top: 130px;
+  left: 46px;
+  border-radius: 50%;
+}
+/* line 619, main.less */
+.grandpa .header .mouth:after {
+  content: "";
+  width: 60px;
+  height: 30px;
+  background: #f8bb9f;
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  border-radius: 50%;
+}
+/* line 632, main.less */
+.grandpa .clothes {
+  background: #a5d1d2;
+  width: 100px;
+  position: absolute;
+  top: 200px;
+  height: 130px;
+  left: 14px;
+  border-radius: 50% 50% 10% 10%;
+  z-index: 2;
+  border: 1px solid #152131;
+}
+/* line 642, main.less */
+.grandpa .clothes .cover {
+  border-radius: 50% 50% 10% 10%;
+  width: 102px;
+  height: 60px;
+  background: #a5d1d2;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+}
+/* line 651, main.less */
+.grandpa .clothes .collar {
+  border-radius: 50% 50% 10% 10%;
+  height: 130px;
+  width: 100px;
+  position: absolute;
+  z-index: 4;
+  background: #a5d1d2;
+  overflow: hidden;
+}
+/* line 659, main.less */
+.grandpa .clothes .collar:after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #a5d1d2;
+  left: 30px;
+  top: -20px;
+  border: 1px solid #152131;
+  z-index: 5;
+}
+/* line 673, main.less */
+.grandpa .hand {
+  z-index: 1;
+  background: #a5d1d2;
+  border: 1px solid #152131;
+  border-radius: 90% 90% 50% 50%;
+  height: 110px;
+  left: -13px;
+  position: absolute;
+  top: 200px;
+  width: 150px;
+}
+/* line 685, main.less */
+.grandpa .trousers {
+  border: 1px solid #152131;
+  height: 140px;
+  left: 16px;
+  position: absolute;
+  top: 331px;
+  width: 96px;
+  background: #6c8d6e;
+}
+/* line 693, main.less */
+.grandpa .trousers:after {
+  content: "";
+  -webkit-transform: rotate(82deg) scale(0.825) skew(70deg) translate(0px);
+      -ms-transform: rotate(82deg) scale(0.825) skew(70deg) translate(0px);
+          transform: rotate(82deg) scale(0.825) skew(70deg) translate(0px);
+  width: 400px;
+  background: #ffef5e;
+  height: 100px;
+  left: -152px;
+  position: absolute;
+  top: 250px;
+}
+/* line 705, main.less */
+.grandpa .footer {
+  width: 30px;
+  height: 15px;
+  background: #a18883;
+  position: absolute;
+  top: 473px;
+}
+/* line 711, main.less */
+.grandpa .footer.left-footer {
+  width: 25px;
+  left: 16px;
+}
+/* line 715, main.less */
+.grandpa .footer.right-footer {
+  left: 84px;
+}
+/* line 719, main.less */
+.grandpa .shoes {
+  width: 45px;
+  height: 18px;
+  position: absolute;
+  top: 483px;
+  background: #555a6d;
+}
+/* line 725, main.less */
+.grandpa .shoes.left-shoes {
+  border-radius: 50% 0 30% 50%;
+  left: -4px;
+  -webkit-transform: rotate(-10deg);
+      -ms-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+/* line 730, main.less */
+.grandpa .shoes.right-shoes {
+  border-radius: 0 50% 50% 30%;
+  left: 84px;
+  -webkit-transform: rotate(10deg);
+      -ms-transform: rotate(10deg);
+          transform: rotate(10deg);
+}

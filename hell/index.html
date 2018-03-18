@@ -1,0 +1,161 @@
+<!doctype html> <!--HTML5页面文档的声明-->
+<html><!--页面最外部结构-->
+ <head><!--网页的头部-->
+	<!--charset="编码集" utf-8 国际编码   gbk  gbk2312 中文-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="keywords" content="关键词的内容36个字范围内" />
+	<meta name="description" content="关键词描述 76字范围内" />
+	<title>地狱-the hell</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<!--CSS层叠样式表-->
+	<style>
+	    /*css rest*/
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin: 0;padding: 0;}
+	</style>
+
+ </head>
+ <body><!--网页的主体-->
+	<script type="text/javascript">
+		var SIZE = 0.5,
+			initial_color = "rgba(255,0,0,0.5)",
+			exploded_color = "rgba(255,255,255,0.5)",
+			explosion_amount = 20;
+
+		var clamp = function clamp(min) {
+		  return function (max) {
+			return function (n) {
+			  return Math.max(min, Math.min(max, n));
+			};
+		  };
+		};
+
+		function Vector2D(x, y) {
+		  function add(v) {
+			return Vector2D(x + v.x / 2, y + v.y / 2);
+		  }
+		  return { x: x, y: y, add: add };
+		}
+
+		function Node(position, velocity, color, lifespan, onDeath) {
+		  return { position: position, velocity: velocity, color: color, lifespan: lifespan, onDeath: onDeath };
+		}
+
+		function nrand() {
+		  return Math.random() - 0.5;
+		}
+
+		function explode(n) {
+		  var ns = [];
+		  for (var r = 0; r < explosion_amount; r++) {
+			ns.push(Node(n.position, Vector2D(n.velocity.x + nrand(), n.velocity.y * nrand()), exploded_color, parseInt(10000 * Math.random() + 100)));
+		  }
+		  return ns;
+		}
+
+		function velo() {
+		  var canvas = document.createElement('canvas'),
+			  ctx = canvas.getContext('2d'),
+			  nodes = [];
+
+		  document.body.appendChild(canvas);
+		  canvas.width = window.innerWidth;
+		  canvas.height = window.innerHeight;
+
+		  canvas.addEventListener('click', reset);
+
+		  var canvasClampX = clamp(0)(canvas.width),
+			  canvasClampY = clamp(0)(canvas.height);
+
+		  function reset() {
+			nodes = [];
+			for (var i = 0; i < canvas.width; i += SIZE) {
+			  var angle = i / (Math.PI * 2),
+				  x = Math.cos(angle) * canvas.height / 4,
+				  y = Math.sin(angle) * canvas.height / 4;
+			  nodes.push(Node(Vector2D(x + canvas.width / 2, y + canvas.height / 2), Vector2D(0, 0), initial_color, 100000 * Math.random(), explode));
+			}
+		  }
+
+		  ctx.fillStyle = "rgba(0,0,0,1)";
+		  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+		  function shuffle(node) {
+			var newX = node.velocity.x + (Math.random() - 0.5) * SIZE,
+				newY = node.velocity.y + (Math.random() - 0.5) * SIZE;
+			return Node(node.position, Vector2D(newX, newY), node.lifespan, node.onDeath);
+		  }
+
+		  function draw() {
+			for (var _iterator = nodes, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+			  var _ref;
+
+			  if (_isArray) {
+				if (_i >= _iterator.length) break;
+				_ref = _iterator[_i++];
+			  } else {
+				_i = _iterator.next();
+				if (_i.done) break;
+				_ref = _i.value;
+			  }
+
+			  var node = _ref;
+
+			  ctx.fillStyle = node.color;
+			  ctx.fillRect(node.position.x, node.position.y, SIZE, SIZE);
+			}
+		  }
+
+		  function update() {
+			var result = [];
+			for (var _iterator2 = nodes, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+			  var _ref2;
+
+			  if (_isArray2) {
+				if (_i2 >= _iterator2.length) break;
+				_ref2 = _iterator2[_i2++];
+			  } else {
+				_i2 = _iterator2.next();
+				if (_i2.done) break;
+				_ref2 = _i2.value;
+			  }
+
+			  var node = _ref2;
+
+			  var shuffled = shuffle(node),
+				  t = Node(node.position.add(shuffled.velocity), shuffled.velocity, node.color, node.lifespan - 1, node.onDeath);
+			  if (t.lifespan > 0) {
+				result.push(t);
+			  } else {
+				if (t.onDeath) {
+				  result = result.concat(t.onDeath(t));
+				}
+			  }
+			}
+			nodes = result;
+		  }
+
+		  reset();
+
+		  return { update: update, draw: draw };
+		}
+		var v = velo();
+
+		function go() {
+		  requestAnimationFrame(go);
+		  v.update();
+		  v.draw();
+		}
+		function randomColor(){
+			var _color = Math.ceil(Math.random()*16777215).toString(16);
+			while(_color.length<6){
+				_color = "0" +_color;
+			};
+			return "#"+ _color
+		}
+		go();
+	</script>
+   
+ </body>
+</html>

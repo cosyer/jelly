@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="./css/reset.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/common.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./css/font-awesome.min.css" charset="utf-8">
+    <link rel="stylesheet" href="./css/main.css" media="screen" title="no title" charset="utf-8">
+    <title>music</title>
+</head>
+
+<body>
+    <audio id="player" src="./autio/1.mp3"></audio>
+    <div class="music-play">
+        <div class="music-icon">
+            <i class="music-center fa fa-music fa-2x"></i>
+        </div>
+        <div class="music-content clear-fix">
+            <ul class="music-menu">
+            </ul>
+            <div class="music-content-main">
+                <ul class="music-content-header clear-fix">
+                    <li class="music-content-header-top"></li>
+                    <li class="music-menu-icon">
+                        <i class="fa fa-list-ul fa-1x"></i>
+                    </li>
+                    <li class="music-title"></li>
+                    <li class="music-author" title="作者相关信息">
+                        <i class="fa fa-leaf"></i>
+                        <span class="author"> create by adam</span>
+                    </li>
+                </ul>
+                <ul class="music-lyric music-picture-rotat">
+                </ul>
+                <div class="music-console">
+                    <div class="music-start">
+                        <i class="fa fa-play fa-2x music-center j-music-icon"></i>
+                    </div>
+                    <ul class="music-console-main clear-fix">
+                        <li class="music-pre">
+                            <i class="fa fa-backward"></i>
+                        </li>
+                        <li class="music-time music-time-currtime">
+                        </li>
+                        <li class="music-progress clear-fix">
+                            <div class="music-progress-start"></div>
+                            <div class="music-progress-end"></div>
+                        </li>
+                        <li class="music-time music-time-endtime">
+                        </li>
+                        <li class="music-volume">
+                            <div class="music-volume-progress">
+                                <div class="music-volume-time-end music-volume-time">
+
+                                </div>
+                                <div class="music-volume-tag">
+
+                                </div>
+                                <div class="music-volume-time-start music-volume-time">
+
+                                </div>
+                            </div>
+                            <i class="fa fa-volume-up j-volume-icon"></i>
+                        </li>
+                        <li class="music-next">
+                            <i class="fa fa-forward"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/lib/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+</body>
+
+</html>

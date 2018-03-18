@@ -1,0 +1,50 @@
+﻿<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XH-TML 1.1 //EN"
+"http://www.w3.org/TR/xhtml//DTD/xhtml-11.dtd">
+
+<html>
+
+  <head>
+     <title>简易计算器~</title>   
+     <link rel="stylesheet" type="text/css" href="简易计算器.css"/>  
+     <script type="text/javascript"  src="简易计算器.js">
+     </script>	
+  </head>
+  
+  
+  <body>
+     <div id="wrapper">
+  	 
+	 <fieldset ><legend>迷你计算机</legend>
+       <form action="" name="form1">
+	   
+	   <div id="jia">
+      		<input type="button" value="+" onclick="Jiafa()"   style="font-size:20px;   width:35px; height:35px;background:#FF99FF;border: none;"/> 
+       </div>
+		    
+	   <div id="jian">
+			<input type="button" value="-" onclick="Jianfa()"  style="font-size:20px;   width:35px; height:35px;background:#66FF66;border: none;"/>
+       </div>
+		
+	   <div id="cheng">	 	
+			<input type="button" value="x" onclick="Chengfa()" style="font-size:20px;   width:35px; height:35px;background:#FFFF66;border: none;"/> 
+       </div>
+			
+	   <div id="chu">
+			<input type="button" value="/" onclick="Chufa()"   style="font-size:20px;  width:35px; height:35px;background:#66FFFF;border: none;"/>
+       </div>
+			
+			<input type="text" size="19"  name="shurukuang" style="margin:0px; padding:0px; " /> 
+      </form>
+    
+     </div>
+	 
+	 <div id="equal">
+	 	<input name="button" type="button"  style="font-size:20px; float:left; width:65px; height:70px;background:#FF3333;" onclick="Result()" value="="/>
+  	 </div>
+	 
+	 <div id="pic">
+	  	<img src= "1.jpg"   alt="图片"   title="萌" />
+	 </div> </fieldset>
+  </body> 
+</html>
