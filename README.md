@@ -29,5 +29,5 @@
 [**snow**：css3飞舞的雪花](https://cosyer.github.io/jelly/snow/)<br>
 **utils**：对原生js的封装常用的功能。<br>
 [**weibo-translation**：仿微博过渡效果](https://cosyer.github.io/jelly/weibo-translation/)<br>
-[**xiaoetong-mobile**：小鹅通移动端](https://cosyer.github.io/jelly/xiaoetong-mobile/)<br>
+[**xiaoetong-mobile**：小鹅通移动端](https://cosyer.github.io/xiaoetong-mobile/)<br>
 
