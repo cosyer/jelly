@@ -1,0 +1,15 @@
+image: alpine:latest
+
+pages:
+  stage: deploy
+  script:
+  - echo 'mkdir public'
+  - mkdir public
+  - echo 'cp to public'
+  - cp -R css img js media index.html public/
+  - echo 'build success'
+  artifacts:
+    paths:
+    - public
+  only:
+  - master

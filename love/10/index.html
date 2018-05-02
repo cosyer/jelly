@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>userless</title>
+    <style type="text/css">
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            background-color: #FF62FF;
+        }
+
+        .content {
+            width: 80%;
+            color: #90F;
+            height: 100%;
+            top: 0px;
+            left: 10%;
+            font-size: 18px;
+            line-height: 25px;
+            font-family: "微软雅黑";
+            margin-top: 0px;
+        }
+
+        body {
+            color: #FFF;
+            padding: 10px;
+            background: #FFF;
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+
+        .des {
+            font-size: 15px;
+            color: #3C3C3C;
+            /*width: 100%;*/
+            text-shadow: 0px 0px 1px #fff;
+            z-index: 1000;
+            right: 20px;
+            position: fixed !important;
+            bottom: 0px;
+        }
+
+        .des a {
+            color: #3C3C3C;
+            text-shadow: 0px 0px 1px #fff;
+        }
+    </style>
+    <script src="./jscss/jquery-1.7.1.min.js" language="javascript" type="text/javascript"></script>
+    <script src="./jscss/tao.js" language="javascript" type="text/javascript"></script>
+    <script>
+        $(document).ready(function (e) {
+            /*禁止右键和隐藏鼠标*/
+            $("body").bind("contextmenu", function () {
+                return false;
+            });
+
+            /*定义文字最底部显示到哪儿*/
+            var guangs = ["　", "|", "　", "|"];
+            var guangBiao = "/";
+            var guangSub = 0;
+            var guang = setInterval("$.guang()", 120);
+
+            var subs = 0;
+            var string = "<-- The End -->";
+            $.intent = function (str) {
+                str = "　　" + str;
+                //var reg=new RegExp("/█{1,2}/","i"); //创建正则RegExp对象
+                str = str.replace(eval("/█/gi"), "█");
+
+                return str;
+            }
+            string = $.intent(string);
+
+            var echo = setInterval("$.echo()", 300);
+
+            $.guang = function () {
+                if (guangSub < guangs.length - 1) {
+                    guangSub++;
+                } else {
+                    guangSub = 0;
+                }
+                guangBiao = guangs[guangSub];
+                $("#guang").html(guangBiao);
+
+            }
+
+            $.echo = function () {
+                if (subs < string.length) {
+                    $("#txt").html($("#txt").html() + $.repl(string.substr(subs, 1)));
+                    if ($("#guang").offset().top > document.body.scrollHeight / 2) {
+                        window.scrollTo(0, $("#guang").offset().top);
+                    }
+                    $(".des").css("bottom", "0px");
+                    subs++;
+                }
+            }
+            $.repl = function (str) {
+                str = str.replace("\r\n", "<br/>");
+                str = str.replace("\n", "<br/>");
+                str = str.replace("█", "<br/>");
+                return str;
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <center>
+        <div align="left" class="content">
+            <span id="txt"></span>
+            <span id="guang"></span>
+            <span></span>
+        </div>
+    </center>
+
+    <!--下面是浮动的桃心-->
+    <div id="bubbles" style="visibility:hidden">
+        <img src="./jscss/1.png">
+        <img src="./jscss/2.png">
+        <img src="./jscss/1.png">
+    </div>
+    <!---->
+
+</body>
+
+</html>
