@@ -32,4 +32,4 @@
 [**xiaoetong-mobile**：小鹅通移动端](https://cosyer.github.io/xiaoetong-mobile/)<br>
 [**impress**：impress的公开课](https://cosyer.github.io/impress/)<br>
 [**computer-completion**：计算机比赛share-demo](https://cosyer.github.io/computer-completion/)<br>
-[**cosyer**：个人引导页](https://cosyer.github.io/jelly/sscosyer/)<br>
+[**cosyer**：个人引导页](https://cosyer.github.io/jelly/cosyer/)<br>
