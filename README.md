@@ -35,3 +35,4 @@
 [**cosyer**：个人引导页](https://cosyer.github.io/jelly/cosyer/)<br>
 [**lottery**：抽奖程序](https://cosyer.github.io/jelly/lottery/)<br>
 [**gallery**：图片画廊](https://cosyer.github.io/jelly/gallery/)<br>
+[**whirlpool**：粒子旋涡](https://cosyer.github.io/jelly/whirlpool/)<br>
