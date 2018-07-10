@@ -38,3 +38,4 @@
 [**whirlpool**：粒子旋涡](https://cosyer.github.io/jelly/whirlpool/)<br>
 [**loading**：博客中使用的loading](https://cosyer.github.io/jelly/loading/)<br>
 [**答辩顺利**：=v=](https://cosyer.github.io/jelly/success/)<br>
+[**10s-challenge**：10s挑战](https://cosyer.github.io/jelly/10s-challenge/)<br>

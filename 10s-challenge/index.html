@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>挑战10秒</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.15/vue.js"></script>
+    <style>
+        .container {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 11rem;
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .btns {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .split {
+            margin-left: 3rem;
+        }
+
+        .result {
+            font-size: 6rem;
+            margin-bottom: 3rem;
+            font-weight: bolder;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .filed {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="title">{{now_timer}}</div>
+        <div :class="['result', issuccess?'success':'filed']">{{result}}</div>
+        <div class="btns">
+            <button type="button" :disabled="!isstart" class="btn btn-success btn-lg split" @click="begin">开 始</button>
+            <button type="button" :disabled="isstart" class="btn btn-danger btn-lg split" @click="stop" @keyup.enter="stop">结 束</button>
+            <button type="button" class="btn btn-info btn-lg split" @click="restart">复 位</button>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            data: {
+                finish_timer: '10:00.00',
+                timer: null,
+                m: '00',
+                s: '00',
+                ms: '00',
+                issuccess: false,
+                result: '',
+                isstart: true
+            },
+            computed: {
+                now_timer: function () {
+                    return this.m + ':' + this.s + '.' + this.ms;
+                }
+            },
+            methods: {
+                // 开始
+                begin: function () {
+                    var _ms = 0;
+                    var _s = 0;
+                    var _m = 0;
+                    var _self = this;
+                    _self.isstart = false;
+                    _self.m = '00';
+                    _self.s = '00';
+                    _self.ms = '000';
+                    this.timer = setInterval(() => {
+                        _ms = _ms + 1;
+                        if (_ms < 100) {
+                            _self.ms = _self.toSCell(_ms);
+                        } else {
+                            _ms = 0;
+                            _s = _s + 1;
+                            if (_s < 60) {
+                                _self.s = _self.toSCell(_s);
+                            } else {
+                                _s = 0;
+                                _m = _m + 1;
+                                _self.m = _self.toSCell(_m);
+                            }
+                        }
+                    }, 10);
+                },
+                // 结束
+                stop: function () {
+                    if (this.now_timer == this.finish_timer) {
+                        this.result = '挑战成功!';
+                        this.issuccess = true;
+                    }
+                    else {
+                        this.result = '挑战失败!';
+                        this.issuccess = false;
+                    }
+                    clearInterval(this.timer);
+                },
+                // 重新开始
+                restart: function () {
+                    this.m = '00';
+                    this.s = '00';
+                    this.ms = '00';
+                    this.isstart = true;
+                    this.result = '';
+                    clearInterval(this.timer);
+                },
+                toMCell: function (num) {
+                    if (num < 10)
+                        return '00' + num;
+                    else if (num < 100)
+                        return '0' + num;
+                    else
+                        return num;
+                },
+                toSCell: function (num) {
+                    if (num < 10)
+                        return '0' + num;
+                    else
+                        return num;
+                }
+            }
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>
