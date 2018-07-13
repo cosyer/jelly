@@ -40,3 +40,4 @@
 [**答辩顺利**：=v=](https://cosyer.github.io/jelly/success/)<br>
 [**10s-challenge**：10s挑战](https://cosyer.github.io/jelly/10s-challenge/)<br>
 [**3Dalbum**：3D相册](https://cosyer.github.io/jelly/3Dalbum/)<br>
+[**react-news**：react新闻站](https://cosyer.github.io/jelly/react-news/)<br>
