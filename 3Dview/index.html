@@ -97,6 +97,15 @@
             position: relative;
             top: 15px;
         }
+
+        #none {
+            position: absolute;
+            left: 45%;
+            top: 200px;
+            width: 100px;
+            height: 100px;
+            z-index: -9999;
+        }
     </style>
 </head>
 
@@ -111,7 +120,7 @@
             <span>在售</span>
         </div>
     </div> -->
-
+        <div id="none"></div>
     </div>
     <div class="divNoticeInfo" id="divNoticeInfo">
         <span>该楼宇已经售完</span>
@@ -119,6 +128,7 @@
     </div>
 </body>
 <script>
+    document.querySelector("#none").scrollIntoView(true);
     var obj = [{
         building: "12号楼",
         top: "32%",
