@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>楼盘</title>
+    <meta name="renderer" content="webkit">
+    <script src="scripts/js/jquery-1.11.3.min.js"></script>
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: "Verdana", "Tahoma", "Lucida Grande", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+            background-size: cover;
+            overflow: scroll;
+        }
+
+        .main {
+            height: 100%;
+            width: 1000px;
+            background: url(images/buildings.png) no-repeat;
+            background-size: 100% 100%;
+            position: relative;
+        }
+
+        .tip {
+            position: absolute;
+            top: 35%;
+            left: 149px;
+        }
+
+        .colorWhite {
+            color：#fff;
+        }
+
+        .colorGray {
+            color：#ddd;
+        }
+
+        .tipContent {
+            height: 30px;
+            width: 80px;
+            /*color: #fff;*/
+            font-size: 11px;
+            border: 1px solid #777;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            display: inline-block;
+            line-height: 30px;
+            box-shadow: 1px 1px 3px #666;
+        }
+
+        .tip img {
+            height: 30px;
+            vertical-align: top;
+        }
+
+        .divNoticeInfo {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            width: 260px;
+            height: 120px;
+            padding: 20px;
+            top: 40%;
+            left: 50%;
+            margin: -70px 0 0 -110px;
+            background: #fff;
+            border: #888 1px solid;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 0 19px 6px rgba(0, 0, 0, 0.17);
+        }
+
+        .divNoticeInfo span {
+            display: block;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .divNoticeInfo .a_close {
+            display: inline-block;
+            text-decoration: none;
+            border: #f00 1px solid;
+            width: 70px;
+            height: 30px;
+            border-radius: 4px;
+            line-height: 28px;
+            color: #f00;
+            font-size: 14px;
+            position: relative;
+            top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <!--  <div class="tip">
+        <img src="images/icon.png">
+        <div class="tipContent">
+            <span>1</span>
+            <span>号楼</span>
+            ▎
+            <span>在售</span>
+        </div>
+    </div> -->
+
+    </div>
+    <div class="divNoticeInfo" id="divNoticeInfo">
+        <span>该楼宇已经售完</span>
+        <a href="javascript:void($('.divNoticeInfo').hide())" class="a_close">关闭</a>
+    </div>
+</body>
+<script>
+    var obj = [{
+        building: "12号楼",
+        top: "32%",
+        left: "149px",
+        status: 0
+    },
+    {
+        building: "13号楼",
+        top: "24%",
+        left: "197px",
+        status: 0
+    },
+    {
+        building: "14号楼",
+        top: "14%",
+        left: "236px",
+        status: 0
+    },
+    {
+        building: "15号楼",
+        top: "15%",
+        left: "300px",
+        status: 0
+    },
+    {
+        building: "9号楼",
+        top: "31%",
+        left: "258px",
+        status: 0
+    },
+    {
+        building: "10号楼",
+        top: "22%",
+        left: "322px",
+        status: 0
+    },
+    {
+        building: "11号楼",
+        top: "23%",
+        left: "400px",
+        status: 0
+    },
+    {
+        building: "8号楼",
+        top: "35%",
+        left: "322px",
+        status: 0
+    },
+    {
+        building: "7号楼",
+        top: "48%",
+        left: "260px",
+        status: 0
+    },
+    {
+        building: "1号楼",
+        top: "45%",
+        left: "346px",
+        status: 0
+    },
+    {
+        building: "3号楼",
+        top: "39%",
+        left: "406px",
+        status: 0
+    },
+    {
+        building: "5号楼",
+        top: "31%",
+        left: "456px",
+        status: 0
+    },
+    {
+        building: "6号楼",
+        top: "27%",
+        left: "470px",
+        status: 0
+    }
+    ]
+    var json = { "code": "00000", "msg": "成功", "data": { "buildings": [{ "buildingId": "2814463212127232", "buildingName": "1号楼", "flag": 29 }, { "buildingId": "2816173681378304", "buildingName": "4号楼", "flag": 2 }, { "buildingId": "2815696594895872", "buildingName": "2号楼", "flag": 0 }, { "buildingId": "2816173380600832", "buildingName": "3号楼", "flag": 0 }, { "buildingId": "2816173962167296", "buildingName": "5号楼", "flag": 0 }, { "buildingId": "2816174136214528", "buildingName": "6号楼", "flag": 0 }, { "buildingId": "2816174281409536", "buildingName": "7号楼", "flag": 0 }, { "buildingId": "2828665474958336", "buildingName": "8号楼", "flag": 0 }, { "buildingId": "2828665627739136", "buildingName": "9号楼", "flag": 0 }, { "buildingId": "2828691312493568", "buildingName": "10号楼", "flag": 0 }, { "buildingId": "2828691440845824", "buildingName": "11号楼", "flag": 0 }, { "buildingId": "2828691551110144", "buildingName": "12号楼", "flag": 0 }, { "buildingId": "2828696937841664", "buildingName": "13号楼", "flag": 0 }, { "buildingId": "2828697088017408", "buildingName": "14号楼", "flag": 0 }], "estateImageUrl": null } }
+    var returnData = json.data.buildings
+    // var apple = [];
+    for (var i = 0; i < returnData.length; i++) {
+        for (var k = 0; k < obj.length; k++) {
+            if (returnData[i].buildingName == obj[k].building) {
+                obj[k].buildingId = returnData[i].buildingId;
+                obj[k].flag = returnData[i].flag;
+            }
+        }
+
+    };
+    // 过滤多余的楼宇
+    obj = obj.filter(function (item) {
+        return item.buildingId ? true : false
+    })
+
+    for (var i = 0; i < obj.length; i++) {
+        var cup;
+        var classType;
+        if (obj[i].flag == 0) {
+            cup = "售完"
+            classType = "colorGray"
+        } else {
+            cup = "在售";
+            classType = "colorWhite";
+        };
+        var apple = obj[i].building.slice(0, 1)
+        var html = [' <div class="tip" onclick="show(' + obj[i].buildingId + ',' + obj[i].flag + ',' + apple + ')" id="' + obj[i].buildingId + '" style="top:' + obj[i].top + ';left:' + obj[i].left +
+            '">',
+            '        <img src="images/icon.png">',
+        '        <div class="tipContent  ' + classType + '">',
+        '            <span>' + obj[i].building + '</span>',
+            // '            <span>号楼</span>',
+            '            ▎',
+        '            <span>' + cup + '</span>',
+            '        </div>',
+            '    </div>'
+        ].join("");
+
+        $('.main').append(html)
+    }
+    $('.colorWhite').css('color', "white")
+    $('.colorGray').css('color', "gray")
+
+    function show(id, flag, name) {
+        if (flag == 0) {
+            $(".divNoticeInfo").show().delay(3000);
+        } else {
+            window.postMessage([id, name]);
+        }
+    }
+</script>
+
+</html>
