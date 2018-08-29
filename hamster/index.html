@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hamster</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    body {
+      width: 320px;
+    }
+    header, main, footer {
+      display: flex;
+      width: 100%;
+      height: 60px;
+    }
+    header {
+      justify-content: space-between;
+      align-items: center;
+      background: yellow;
+    }
+    main {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: center;
+      height: 320px;
+      background: green;
+    }
+    footer {
+      justify-content: center;
+      align-items: center;
+      background: red;
+    }
+
+    .mouse-ground {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 84px;
+      height: 84px;
+      background: blue;
+    }
+
+    .hole {
+      width: 60px;
+      height: 60px;
+      /* 椭圆代办 */
+      /* border-radius: 15px/30px 30px/15px; */
+      border-radius: 30px;
+      background: black;
+    }
+
+    .mouse {
+      position: absolute;
+      left: 22px;
+      top: 44px;
+      width: 40px;
+      height: 40px;
+      background: purple;
+      transition: transform 1s linear;
+      transform: translateY(0);
+      cursor: pointer;
+    }
+
+    .grass {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 40px;
+      background: greenyellow;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span id="score">得分：0</span>
+    <button onclick="setLevel()">难度</button>
+    <button onclick="restart()">重玩</button>
+  </header>
+  <main>
+    <section class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </section>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+    <div class="mouse-ground">
+      <div class="hole"></div>
+      <button class="mouse"></button>
+      <div class="grass"></div>
+    </div>
+  </main>
+  <footer>一些说明</footer>
+
+  <script>
+    /**
+    * 一共9只老鼠，得弄个随机数来提供让老鼠出来，现在老鼠都是缩在洞里。
+    * 一只出来，等一秒钟，没有点击就回去，回去后，另一只再出来。
+    */
+
+    const gameConfig = {
+      level: 5, // 1-9等级
+      hasAutoHidden: false, // 是否已经自动隐藏，用于判断是否与点击成功隐藏老鼠冲突
+    }
+
+    let totalScore = 0
+
+    // 拿到所有的老鼠
+    const mouses = document.querySelectorAll('.mouse')
+
+    // 绑定出现时候的2s自动隐藏事件，避免击打造成提前隐藏后，出现内部那个2s隐藏再次触发。
+    let timeout
+
+    // 击打
+    const hit = e => {
+      // 加分
+      score.innerText = `得分：${++totalScore}`
+
+      const mouse = e.target
+      // 击打后，避免多次击打
+      mouse.disabled = true
+
+      // 隐藏老鼠
+      if(!gameConfig.hasAutoHidden) hidden(mouse)
+      // 击打了，就取消出现内部2s自动隐藏事件
+      clearTimeout(timeout)
+      // 重置时候自动隐藏
+      gameConfig.hasAutoHidden = false
+    }
+
+    // 每只老鼠绑定击打事件
+    mouses.forEach(mouse => mouse.addEventListener('click', hit))
+
+    // 出来
+    const show = mouse => {
+      mouse.style.transform = 'translateY(-40px)'
+      // 出来一秒后自动缩回去，出现花1s，等待1s，所以要2s
+      timeout = setTimeout(() => {
+        gameConfig.hasAutoHidden = true
+        hidden(mouse)
+      }, 2 * (1000 - gameConfig.level * 100))
+    }
+
+    // 隐藏
+    const hidden = mouse => {
+      mouse.style.transform = 'translateY(0)'
+      // 隐藏后，还得出新的老鼠。
+      setTimeout(() => {
+        // 隐藏后，解开可能的disabled
+        mouse.disabled = false
+        show(getRandomMouse())
+      }, 1 * (1000 - gameConfig.level * 100))
+    }
+
+    // 随机获取老鼠
+    const getRandomMouse = () => mouses[~~(Math.random() * 9)]
+
+    // 重新开始游戏
+    const restart = () => {
+      // 还原所有，分、动画
+      // 还原分
+      score.innerText = '得分：0'
+      // 所有的都缩回去
+      hiddenAll()
+      // 清除遗留的出现内部绑定的事情
+      clearTimeout(timeout)
+
+      // 开始
+      setTimeout(() => show(getRandomMouse()), 1 * (1000 - gameConfig.level * 100))
+    }
+
+    const hiddenAll = () => mouses.forEach(mouse => {
+      mouse.style.transform = 'translateY(0)'
+      // 设置难度时候用到
+      mouse.style.transition = `transform ${1 - gameConfig.level / 10}s linear`
+      clearTimeout(timeout)
+    })
+    // 设置难度
+    const setLevel = () => {
+      const value = prompt('设置游戏难度，请输入1-9。别手贱，会鬼畜。。。')
+
+      const warning = () => {
+        alert('请输入有效值')
+        setLevel()
+      }
+
+      switch(value) {
+        case null: console.log("点击了取消")
+        break
+        case "": warning()
+        break
+        default: {
+          if(Number(value)) {
+            gameConfig.level = Number(value)
+            hiddenAll()
+            setTimeout(restart, 1000)
+          }
+          else warning()
+        }
+      }
+    }
+
+    restart()
+  </script>
+</body>
+</html>

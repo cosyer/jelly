@@ -43,3 +43,5 @@
 [**react-news**：react新闻站](https://cosyer.github.io/jelly/react-news/)<br>
 [**3Dview**：3D楼盘](https://cosyer.github.io/jelly/3Dview/3dView.html)<br>
 [**3Dview**：楼盘锚点](https://cosyer.github.io/jelly/3Dview/)<br>
+[**hamster**：打地鼠](https://cosyer.github.io/jelly/hamster/)<br>
+[**puzzle**：拼图](https://cosyer.github.io/jelly/puzzle/)<br>

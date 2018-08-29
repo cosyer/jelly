@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Puzzle</title>
+  <style>
+    .cut-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 0;
+      padding: 0;
+      transition: transform .3s linear;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header,
+    main,
+    footer {
+      width: 50%;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    main {
+      position: relative;
+      height: auto;
+    }
+
+    .game-area {
+      position: relative;
+      height: auto;
+    }
+
+    #background-img {
+      max-width: 100%;
+      max-height: 100%;
+      vertical-align: top;
+      opacity: 0;
+    }
+
+    #cut-imgs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    .selected {
+      border: 1px solid blue;
+    }
+
+    #download {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <button onclick='Game.restart()'>重新开始</button>
+    <button id="download" onclick='Game.openImage()'>新标签打开图片</button>
+  </header>
+  <main>
+    <section class="game-area">
+      <img id='background-img' src="#" alt="backgroundImg">
+      <div id="cut-imgs"></div>
+    </section>
+  </main>
+
+  <script>
+    const Game = {
+      // 重新开始游戏
+      restart() {
+        // 清空已有数据，重置按钮
+        this.reset()
+
+        const level = this.config.level
+        // 计算position的参数
+        const positionParam = 1 / (level - 1) * 100
+        const imgUrl = this.config.imgUrl = `https://h5games-dom.oss-cn-hangzhou.aliyuncs.com/puzzle/${~~(Math.random() * 5)}.png`
+        const backgroundImg = document.querySelector('#background-img')
+        backgroundImg.src = imgUrl
+
+        // 获取样式表
+        const styleSheet = this.config.imgCutStyle = document.styleSheets[0]
+
+        // 如果添加过自定义则删除
+        let firstRule = styleSheet.rules[0]
+        if (firstRule.selectorText === '.custom') styleSheet.deleteRule(0)
+        let scale = 1 / this.config.level * 100 + '%'
+
+        styleSheet.insertRule(`.custom {
+          width: ${scale};
+          height: ${scale};
+          background: url(${imgUrl}) no-repeat;
+          background-size: ${this.config.level * 100}%; }`, 0)
+
+        backgroundImg.onload = () => {
+          for (let i = 0, j = Math.pow(this.config.level, 2); i < j; i++) {
+            this.config.cutImgsCountArray.push(i)
+          }
+          // DOM字符串
+          let cutImgsStr = ''
+          this.getInitialSort()
+          this.config.cutImgsCountArray.forEach((num, index) => {
+            // 保存正确的变化，做判断是否获胜的基础
+            this.config.trueTransforms.push(`translate(${index % level * 100}%, ${~~(index / level) % level * 100}%)`)
+
+            // 这里设置会变动的style
+            const transform = `transform: translate(${num % level * 100}%, ${~~(num / level) % level * 100}%);`
+            const backgroundPosition = `background-position: ${index % level * positionParam}% ${~~(index / level) % level * positionParam}%;`
+
+            // 全部在左上初始位置，设置偏移量即可
+            cutImgsStr += `<button class="cut-img custom" data-index=${index} onclick="Game.click(event)" style="${transform + backgroundPosition}"></button>`
+          })
+          document.querySelector('#cut-imgs').innerHTML = cutImgsStr
+          this.instance.cutImgs = document.querySelectorAll('.cut-img')
+        }
+      },
+      // 点击图片
+      click(e) {
+        const index = e.target.dataset.index
+        // 第一次点击直接结束
+        if (this.tool.currentIndex === -1) {
+          this.getCutImg(index).classList.add('selected')
+          this.tool.currentIndex = index
+          return
+        }
+
+        const oldCutImg = this.getCutImg(this.tool.currentIndex)
+        // 如果点击不是同一个再走逻辑
+        if (this.tool.currentIndex === index) {
+          this.getCutImg(index).classList.remove('selected')
+          this.tool.currentIndex = -1
+        } else {
+          const newCutImg = this.getCutImg(index)
+          const [a, b] = [newCutImg.style.transform, oldCutImg.style.transform]
+          oldCutImg.style.transform = a
+          newCutImg.style.transform = b
+
+          this.tool.currentIndex = -1
+
+          setTimeout(() => {
+            download.style.display = 'none'
+            oldCutImg.classList.remove('selected')
+            newCutImg.classList.remove('selected')
+            if (this.checkNoWin()) console.log('NoWin')
+            else {
+              download.style.display = 'block'
+              alert('win')
+            }
+          }, 500);
+        }
+      },
+      // 获取实例
+      getCutImg(index) {
+        return this.instance.cutImgs[index]
+      },
+      // 获取初始的正确排序
+      getInitialSort() {
+        const cal = arr => {
+          let length = arr.length
+          let reverse = 0
+          for (let i = 0; i < length - 1; i++) {
+            let n = arr[i]
+            for (let j = i + 1; j < length; j++) {
+              let m = arr[j]
+              if (n > m) reverse += 1
+            }
+          }
+          return reverse
+        }
+
+        // 数组随机排序
+        const randomSort = (a, b) => Math.random() > 0.5 ? -1 : 1
+
+        // 循环直到获取可还原的排序
+        while (1) {
+          if (cal(this.config.cutImgsCountArray.sort(randomSort)) % 2 === 0) return
+        }
+      },
+      // 检查是否还没胜利
+      checkNoWin() {
+        let cutImgs = this.instance.cutImgs
+        let trueTransforms = this.config.trueTransforms
+        for (let i = 0, j = this.instance.cutImgs.length; i < j; i++) {
+          if (cutImgs[i].style.transform !== trueTransforms[i]) return true
+        }
+      },
+      // 清空已有数据
+      reset() {
+        let resetParam = this.resetParam
+        this.config = this.deepCopy(resetParam.config)
+        this.instance = this.deepCopy(resetParam.instance)
+        this.tool = this.deepCopy(resetParam.tool)
+        download.style.display = 'none'
+      },
+      deepCopy(obj) {
+        return JSON.parse(JSON.stringify(obj))
+      },
+      // 打开图片
+      openImage() {
+        window.open(this.config.imgUrl)
+      },
+      // 重置时候的初始化参数
+      resetParam: {
+        // 配置
+        config: {
+          level: 3,
+          cutImgsCountArray: [],
+          trueTransforms: [],
+          imgCutStyle: {},
+          imgUrl: '',
+        },
+        // 实例
+        instance: {
+          // 所有图片的实例
+          cutImgs: [],
+        },
+        // 记录工具
+        tool: {
+          currentIndex: -1
+        },
+      }
+    }
+
+    Game.restart()
+  </script>
+</body>
+
+</html>
