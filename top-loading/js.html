@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原生顶部加载条</title>
+    <style>
+        .animation_paused {
+            -webkit-animation-play-state: paused;
+            -moz-animation-play-state: paused;
+            -ms-animation-play-state: paused;
+            animation-play-state: paused;
+        }
+    </style>
+    <script>
+        var LoadingBar = {
+            /*初始化*/
+            init: function () {
+                this.creatStyle();
+                this.creatLoadDiv();
+            },
+            /*记录当前宽度*/
+            width: 0,
+            /*页面里LoadingBar div*/
+            oLoadDiv: false,
+            /*开始*/
+            setWidth: function (w) {
+                if (!this.oLoadDiv) { this.init(); }
+                var oLoadDiv = this.oLoadDiv,
+                    width = Number(w) || 100;
+                /*防止后面写入的width小于前面写入的width*/
+                (width < this.width) ? width = this.width : this.width = width;
+                oLoadDiv.className = 'animation_paused';
+                oLoadDiv.style.width = width + '%';
+                oLoadDiv.className = '';
+                if (width === 100) { this.over(oLoadDiv); }
+            },
+            /*页面加载完毕*/
+            over: function (obj) {
+                setTimeout(function () {
+                    obj.style.display = 'none';
+                }, 1000);
+            },
+            /*创建load条*/
+            creatLoadDiv: function () {
+                var div = document.createElement('div');
+                div.id = 'LoadingBar';
+                document.body.appendChild(div);
+                this.oLoadDiv = document.getElementById('LoadingBar');
+            },
+            /*创建style*/
+            creatStyle: function () {
+                var nod = document.createElement('style'),
+                    str = '#LoadingBar{transition:all 1s;-moz-transition:all 1s;-webkit-transition:all 1s;-o-transition:all 1s;background-color:#f90;height: 3px;width:0; position: fixed;top: 0;z-index: 99999;left: 0;font-size: 0;z-index:9999999;_position:absolute;_top:expression(eval(document.documentElement.scrollTop));}.animation_paused{-webkit-animation-play-state:paused;-moz-animation-play-state:paused;-ms-animation-play-state:paused;animation-play-state:paused;};'
+                nod.type = 'text/css';
+                //ie下 
+                nod.styleSheet ? nod.styleSheet.cssText = str : nod.innerHTML = str;
+                document.getElementsByTagName('head')[0].appendChild(nod);
+            }
+        } 
+    </script>
+</head>
+
+<body>
+    <div id="top"></div>
+    <script>LoadingBar.setWidth(1)</script>
+    <div id="nav"></div>
+    <script>LoadingBar.setWidth(20)</script>
+
+    <div id="banner"></div>
+    <script>LoadingBar.setWidth(40)</script>
+
+    <div id="main"></div>
+    <script>LoadingBar.setWidth(60)</script>
+
+    <div id="right"></div>
+    <script>LoadingBar.setWidth(90)</script>
+
+    <div id="foot"></div>
+    <script>LoadingBar.setWidth(100)</script>
+</body>
+
+</html>

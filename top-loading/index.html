@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>顶部加载条</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        #progress {
+            position: fixed;
+            height: 2px;
+            background: #6bc30d;
+            transition: opacity 500ms linear
+        }
+
+        #progress.done {
+            opacity: 0
+        }
+
+        #progress span {
+            position: absolute;
+            height: 2px;
+            -webkit-box-shadow: #6bc30d 1px 0 6px 1px;
+            -webkit-border-radius: 100%;
+            opacity: 1;
+            width: 150px;
+            right: -10px;
+            -webkit-animation: pulse 2s ease-out 0s infinite;
+        }
+
+        @-webkit-keyframes pulse {
+            30% {
+                opacity: .6
+            }
+
+            60% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: .6
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress">
+        <span></span>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $({ property: 0 }).animate({ property: 100 }, {
+        duration: 2000,
+        step: function () {
+            var percentage = Math.round(this.property);
+
+            $('#progress').css('width', percentage + "%");
+
+            if (percentage == 100) {
+                $("#progress").addClass("done");//完成，隐藏进度条 
+            }
+        }
+    });
+</script>
+
+</html>

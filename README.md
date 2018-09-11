@@ -45,3 +45,4 @@
 [**3Dview**：楼盘锚点](https://cosyer.github.io/jelly/3Dview/)<br>
 [**hamster**：打地鼠](https://cosyer.github.io/jelly/hamster/)<br>
 [**puzzle**：拼图](https://cosyer.github.io/jelly/puzzle/)<br>
+[**top-loading**：顶部加载条](https://cosyer.github.io/jelly/top-loading/)<br>
