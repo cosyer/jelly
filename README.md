@@ -47,3 +47,4 @@
 [**puzzle**：拼图](https://cosyer.github.io/jelly/puzzle/)<br>
 [**top-loading**：顶部加载条](https://cosyer.github.io/jelly/top-loading/)<br>
 [**introduction**：基于gulp工作流制作的个人引导页](https://cosyer.github.io/jelly/introduction/)<br>
+[**jerry-menu**：果冻菜单](https://cosyer.github.io/jelly/jerry-menu/)<br>
