@@ -49,3 +49,5 @@
 [**introduction**：基于gulp工作流制作的个人引导页](https://cosyer.github.io/jelly/introduction/)<br>
 [**jerry-menu**：果冻菜单](https://cosyer.github.io/jelly/jerry-menu/)<br>
 [**drag**：图片拖放](https://cosyer.github.io/jelly/drag/)<br>
+(https://cosyer.github.io/jelly/jerry-menu/)<br>
+[**canvas-spotline**：画布版点线连接](https://cosyer.github.io/jelly/canvas-spotline/)<br>
