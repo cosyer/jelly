@@ -22,7 +22,7 @@
 [**particle**：粒子效果。](https://cosyer.github.io/jelly/particle/)<br>
 [**picture-angle**：图片折角。](https://cosyer.github.io/jelly/picture-angle/)<br>
 [**plane**：飞机。](https://cosyer.github.io/jelly/plane/)<br>
-[**pre-slidershow**：简单的幻灯片实现。](https://cosyer.github.io/jelly/pre-slidershow/)<br>
+[**pre-slideshow**：简单的幻灯片实现。](https://cosyer.github.io/jelly/pre-slideshow/)<br>
 [**responsive**：谷歌的响应式网页教程。](https://cosyer.github.io/jelly/responsive/)<br>
 [**scratch**：刮刮卡。](https://cosyer.github.io/jelly/scratch/)<br>
 [**simple-calculator**：简易计算器。](https://cosyer.github.io/jelly/simple-calculator/)<br>
@@ -50,3 +50,4 @@
 [**jerry-menu**：果冻菜单](https://cosyer.github.io/jelly/jerry-menu/)<br>
 [**drag**：图片拖放](https://cosyer.github.io/jelly/drag/)<br>
 [**canvas-spotline**：画布版点线连接](https://cosyer.github.io/jelly/canvas-spotline/)<br>
+[**js-sort**：表格排序](https://cosyer.github.io/jelly/js-sort/)<br>
