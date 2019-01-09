@@ -53,3 +53,4 @@
 [**js-sort**：表格排序](https://cosyer.github.io/jelly/js-sort/)<br>
 [**snake**：贪吃蛇](https://cosyer.github.io/jelly/snake/)<br>
 [**funny**：滑稽](https://cosyer.github.io/jelly/funny/)<br>
+[**fullscreen**：全屏](https://cosyer.github.io/jelly/fullscreen/)<br>
