@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>放大镜效果</title>
+
+    <style type="text/css">
+      * {
+        padding: 0px;
+        margin: 0px;
+      }
+
+      .box {
+        margin: 100px;
+        width: 350px;
+        height: 350px;
+        position: relative;
+        border: solid 1px gray;
+      }
+
+      .cover {
+        width: 150px;
+        height: 150px;
+        opacity: 0.3;
+        background-color: yellow;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        display: none;
+      }
+
+      .big {
+        position: absolute;
+        top: 0px;
+        left: 360px;
+        display: none;
+        overflow: hidden;
+        height: 400px;
+        width: 400px;
+      }
+
+      .big img {
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 一个大盒子，用以控制位置 -->
+    <div id="box" class="box">
+      <!-- 小图片盒子 -->
+      <div class="small">
+        <img src="./avatar.jpeg" width="350px" />
+        <!-- 遮盖层 -->
+        <div class="cover"></div>
+      </div>
+      <!-- 大图片 -->
+      <div class="big"><img src="./avatar.jpeg" width="600px" /></div>
+    </div>
+
+    <script type="text/javascript">
+      // 1.获取需要操作的元素
+      var box = document.getElementById("box");
+      var smallBox = box.children[0];
+      var bigBox = box.children[1];
+      var cover = smallBox.children[1];
+      var bigImage = bigBox.children[0];
+      //2.鼠标移动进入小盒子,遮盖层和大图片出现
+      box.onmouseenter = function() {
+        cover.style.display = "block";
+        bigBox.style.display = "block";
+      };
+      //3.鼠标离开小盒子,遮盖层和大图片隐藏
+      box.onmouseleave = function() {
+        cover.style.display = "none";
+        bigBox.style.display = "none";
+      };
+
+      //4.鼠标移动,遮盖层跟着移动,并且鼠标点位于遮盖层的中心位置
+      box.onmousemove = function(e) {
+        e = e || window.event;
+        //实现思路:鼠标在盒子中的位置=鼠标在文档中位置-盒子位置
+        var mouse_in_documentX =
+          e.pageX ||
+          e.clientX +
+            (document.documentElement.scrollLeft || document.body.scrollLeft);
+        var mouse_in_documentY =
+          e.pageY ||
+          e.clientY +
+            (document.documentElement.scrollTop || document.body.scrollTop);
+        //鼠标在盒子中的位置,就是遮盖层的位置
+        var mouse_in_boxX = mouse_in_documentX - box.offsetLeft;
+        var mouse_in_boxY = mouse_in_documentY - box.offsetTop;
+        //让鼠标位于遮盖层的中央
+        var coverX = mouse_in_boxX - cover.offsetWidth / 2;
+        var coverY = mouse_in_boxY - cover.offsetHeight / 2;
+        //遮盖层不能超过小盒子范围
+        coverX = coverX < 0 ? 0 : coverX;
+        coverY = coverY < 0 ? 0 : coverY;
+        coverX =
+          coverX > box.offsetWidth - cover.offsetWidth
+            ? box.offsetWidth - cover.offsetWidth
+            : coverX;
+        coverY =
+          coverY > box.offsetHeight - cover.offsetHeight
+            ? box.offsetHeight - cover.offsetHeight
+            : coverY;
+        cover.style.top = coverY + "px";
+        cover.style.left = coverX + "px";
+        //当遮盖层移动的时候,大图片跟着遮盖层移动(比例关系换算问题)
+        //公式：遮盖层移动距离/遮盖层最大移动距离=大图片移动距离/大图片最大移动距离
+        //故:大图片移动距离=遮盖层移动距离/遮盖层最大移动距离*大图片最大移动距离
+
+        //遮盖层最大距离
+        var coverMax = box.offsetWidth - cover.offsetWidth;
+        //大图片最大移动距离
+        var bigImageMax = bigImage.offsetWidth - bigBox.offsetWidth;
+        var bigImageX = (coverX * bigImageMax) / coverMax;
+        var bigImageY = (coverY * bigImageMax) / coverMax;
+
+        bigImage.style.top = -bigImageY + "px";
+        bigImage.style.left = -bigImageX + "px";
+      };
+    </script>
+  </body>
+</html>
