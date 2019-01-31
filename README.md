@@ -55,3 +55,4 @@
 [**funny**：滑稽](https://cosyer.github.io/jelly/funny/)<br>
 [**fullscreen**：全屏](https://cosyer.github.io/jelly/fullscreen/)<br>
 [**enlarge**：购物车放大镜](https://cosyer.github.io/jelly/enlarge/)<br>
+[**verifycode**：canvas生成验证码](https://cosyer.github.io/jelly/verifycode/)<br>
