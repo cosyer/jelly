@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>番茄工作法</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./bootstrap/css/bootstrap.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./style/main.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div id="control">
+        <h2 id="title">番茄工作法</h2>
+        <div id="remainTime" class="remainTime">25:00</div>
+        <div id="progressBarBox" class="progress progress-striped">
+          <div id="progressBar" class="bar"></div>
+        </div>
+
+        <div id="currentTask"></div>
+
+        <textarea id="taskName" rows="2" title="请输入任务...">
+请输入任务...</textarea
+        >
+        <button id="startWorkButton" class="btn btn-primary">开始工作</button>
+        <button id="startRestButton" class="btn btn-warning">开始休息</button>
+        <button id="stopButton" class="btn btn-danger disabled">停止</button>
+      </div>
+
+      <div id="more">
+        <button id="introButton" class="btn btn-info">番茄工作方法</button>
+        <div id="introBoard">
+          <h4>番茄工作法：最简单有效的时间管理方式</h4>
+          <ol id="introList">
+            <li>输入一个任务，将番茄时间设为25分钟点【开始工作】</li>
+            <li>
+              专注工作，中途不允许做任何与该任务无关的事，直到番茄时钟响起
+            </li>
+            <li>然后短暂休息一下，5分钟左右</li>
+          </ol>
+          <a href="http://baike.baidu.com/view/5259318.htm" target="_blank"
+            >详细...</a
+          >
+        </div>
+        <button id="settingButton" class="btn btn-info">设置</button>
+        <ul id="settingBoard" class="form-inline">
+          <li>
+            <label>
+              <span id="loopCheckboxText">自动循环</span>
+              <input id="isLoopCheckbox" type="checkbox" />
+            </label>
+          </li>
+          <li>
+            <span id="workTimeText">工作时长</span>
+            <input
+              id="workTime"
+              type="text"
+              value="25"
+              title="上下拖拽或者上下按键也可以改变值"
+            />
+          </li>
+          <li>
+            <span id="restTimeText">休息时长</span>
+            <input
+              id="restTime"
+              type="text"
+              value="5"
+              title="上下拖拽或者上下按键也可以改变值"
+            />
+          </li>
+        </ul>
+
+        <button id="taskListButton" class="btn btn-info">任务记录</button>
+        <div id="taskListBoard">
+          <ul id="taskList"></ul>
+          <button id="clearTaskListButton" class="btn btn-danger">
+            清空记录
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/jx/jx.core.js"></script>
+    <script src="./js/jx/jx.base.js"></script>
+    <script src="./js/jx/jx.browser.js"></script>
+    <script src="./js/jx/jx.dom.js"></script>
+    <script src="./js/jx/jx.event.js"></script>
+
+    <script src="./js/jx/jx.format.js"></script>
+    <script src="./js/jx/jx.date.js"></script>
+    <script src="./js/jx/jx.json.js"></script>
+    <script src="./js/jx/jx.swfobject.js"></script>
+    <script src="./js/jx/jx.sound.js"></script>
+
+    <script src="./js/alloy.timer.js"></script>
+
+    <!--Tencent Analytics-->
+    <script
+      type="text/javascript"
+      src="http://tajs.qq.com/stats?sId=24711241"
+      charset="UTF-8"
+    ></script>
+    <!--Google Analytics-->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(["_setAccount", "UA-23019343-9"]);
+      _gaq.push(["_trackPageview"]);
+
+      (function() {
+        var ga = document.createElement("script");
+        ga.type = "text/javascript";
+        ga.async = true;
+        ga.src =
+          ("https:" == document.location.protocol
+            ? "https://ssl"
+            : "http://www") + ".google-analytics.com/ga.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
