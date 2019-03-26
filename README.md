@@ -57,3 +57,4 @@
 [**enlarge**：购物车放大镜](https://cosyer.github.io/jelly/enlarge/)<br>
 [**verifycode**：canvas生成验证码](https://cosyer.github.io/jelly/verifycode/)<br>
 [**tomato-timer**：番茄工作法](https://cosyer.github.io/jelly/tomato-timer/)<br>
+[**ring**：基于threejs的定制戒指](https://cosyer.github.io/jelly/ring/)<br>

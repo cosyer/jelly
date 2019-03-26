@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ring</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        color: #000;
+        font-family: Monospace;
+        font-size: 13px;
+        text-align: center;
+        font-weight: bold;
+        height: 100%;
+        background-color: #fff;
+        margin: 0px;
+        overflow: hidden;
+      }
+      #container {
+        width: 100%;
+        height: 100%;
+      }
+      .dg.ac {
+        position: absolute;
+        z-index: 2 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script src="js/libs/three.min.js"></script>
+    <script src="js/controls/OrbitControls.js"></script>
+    <script src="js/libs/Detector.min.js"></script>
+    <script src="js/exporters/STLExporter.js"></script>
+    <script src="js/exporters/OBJExporter.js"></script>
+    <script src="js/libs/stats.min.js"></script>
+    <script src="js/libs/dat.gui.min.js"></script>
+    <script src="js/ring.js"></script>
+    <script>
+      var config = {
+        text: "helloword",
+        height: 140,
+        materialName: "gold_yellow",
+        model: "9-1",
+        exportOBJ: function() {
+          Ring.export("obj");
+        },
+        exportSTL: function() {
+          Ring.export("stl");
+        }
+      };
+      var changeClock = null;
+      Ring.init(
+        config.text, //文字内容
+        config.materialName, //材质   黄金:gold_yellow  玫瑰金:gold_red   银: silver
+        config.model, //戒圈类型   9-1  9-2  ...  9-5   在model目录下需要有同名js模型文件
+        "Script_MT_Bold_Regular", //字体名字   在font目录下需要有同名json字体文件
+        "container"
+      ); // id
+      var gui = new dat.GUI();
+      gui.add(config, "text").onChange(function() {
+        clearTimeout(changeClock);
+        changeClock = setTimeout(function() {
+          Ring.change("text", config.text);
+        }, 300);
+      });
+      gui.add(config, "height", 120, 200).onChange(function() {
+        Ring.change("height", config.height);
+      });
+      gui
+        .add(config, "materialName", {
+          黄金: "gold_yellow",
+          玫瑰金: "gold_red",
+          "铂金/银": "silver"
+        })
+        .onChange(function() {
+          Ring.change("material", config.materialName);
+        });
+      gui
+        .add(config, "model", {
+          "9-1": "9-1",
+          "9-2": "9-2",
+          "9-3": "9-3",
+          "9-4": "9-4",
+          "9-5": "9-5"
+        })
+        .onChange(function() {
+          config.height = 140;
+          Ring.change("model", config.model);
+        });
+      gui.add(config, "exportOBJ");
+
+      gui.add(config, "exportSTL");
+    </script>
+  </body>
+</html>
