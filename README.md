@@ -58,3 +58,4 @@
 [**verifycode**：canvas生成验证码](https://cosyer.github.io/jelly/verifycode/)<br>
 [**tomato-timer**：番茄工作法](https://cosyer.github.io/jelly/tomato-timer/)<br>
 [**ring**：基于threejs的定制戒指](https://cosyer.github.io/jelly/ring/)<br>
+[**seven-pieces**：七巧板](https://cosyer.github.io/jelly/seven-pieces/)<br>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>seven-pieces</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 600px;
+      height: 600px;
+      margin: 20px auto;
+    }
+  </style>
+  <body>
+    <div>
+      <canvas id="canvas"> </canvas>
+    </div>
+    <script>
+      window.onload = function() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        canvas.width = 600;
+        canvas.height = 600;
+        //开始绘制
+        //第一块开始
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(600, 0);
+        ctx.lineTo(300, 300);
+        ctx.lineTo(0, 0);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(204, 240, 99)";
+        ctx.fillStyle = "rgb(204, 240, 99)";
+        ctx.fill();
+        ctx.stroke();
+        //第一块结束
+        //第二块开始
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, 600);
+        ctx.lineTo(300, 300);
+        ctx.lineTo(0, 0);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(95, 182, 209)";
+        ctx.fillStyle = "rgb(95, 182, 209)";
+        ctx.fill();
+        ctx.stroke();
+        //第二块结束
+        //第三块开始
+        ctx.beginPath();
+        ctx.moveTo(0, 600);
+        ctx.lineTo(300, 600);
+        ctx.lineTo(150, 450);
+        ctx.lineTo(0, 600);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(255, 156, 207)";
+        ctx.fillStyle = "rgb(255, 156, 207)";
+        ctx.fill();
+        ctx.stroke();
+        //第三块结束
+        //第四块开始
+        ctx.beginPath();
+        ctx.moveTo(300, 600);
+        ctx.lineTo(600, 600);
+        ctx.lineTo(600, 300);
+        ctx.lineTo(300, 600);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(253, 197, 33)";
+        ctx.fillStyle = "rgb(253, 197, 33)";
+        ctx.fill();
+        ctx.stroke();
+        //第四块结束
+        //第五块开始
+        ctx.beginPath();
+        ctx.moveTo(300, 600);
+        ctx.lineTo(450, 450);
+        ctx.lineTo(300, 300);
+        ctx.lineTo(150, 450);
+        ctx.lineTo(300, 600);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(168, 153, 196)";
+        ctx.fillStyle = "rgb(168, 153, 196)";
+        ctx.fill();
+        ctx.stroke();
+        //第五块结束
+        //第六块开始
+        ctx.beginPath();
+        ctx.moveTo(300, 300);
+        ctx.lineTo(450, 450);
+        ctx.lineTo(450, 150);
+        ctx.lineTo(300, 300);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(254, 234, 19)";
+        ctx.fillStyle = "rgb(254, 234, 19)";
+        ctx.fill();
+        ctx.stroke();
+        //第六块结束
+        //第七块开始
+        ctx.beginPath();
+        ctx.moveTo(600, 0);
+        ctx.lineTo(600, 300);
+        ctx.lineTo(450, 450);
+        ctx.lineTo(450, 150);
+        ctx.lineTo(600, 0);
+        ctx.closePath();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = "rgb(255, 80, 99)";
+        ctx.fillStyle = "rgb(255, 80, 99)";
+        ctx.fill();
+        ctx.stroke();
+        //第七块结束
+      };
+    </script>
+  </body>
+</html>
