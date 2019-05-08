@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-color: rgb(108, 136, 136);
+      }
+
+      #child {
+        width: 100%;
+        height: 20vh;
+      }
+    </style>
+    <title>两个页面通信</title>
+  </head>
+
+  <body>
+    <h1>两个页面通信</h1>
+    <iframe id="child" src="./child/index.html" frameborder="0"></iframe>
+    <form id="form">
+      <input type="text" id="input" />
+      <button>发送</button>
+    </form>
+    <pre id="code"></pre>
+    <script>
+      function main() {
+        const targetOrigin = `${
+          window.location.origin
+        }/postMessage/child/index.html`;
+        document.getElementById("form").onsubmit = event => {
+          event.preventDefault();
+          const value = document.getElementById("input").value;
+          document
+            .getElementById("child")
+            .contentWindow.postMessage(value, targetOrigin);
+        };
+      }
+
+      const pre = document.getElementById("code");
+
+      if (pre) {
+        pre.innerHTML = main.toString();
+        pre.style.backgroundColor = "#b5ffe6";
+        pre.style.padding = "1rem";
+        pre.style.borderRadius = "10px";
+        pre.style.overflowX = "auto";
+      }
+    </script>
+  </body>
+</html>

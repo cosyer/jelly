@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-color: aquamarine;
+      }
+    </style>
+    <title>child</title>
+  </head>
+
+  <body>
+    child
+    <div id="receive"></div>
+    <pre id="code"></pre>
+    <script>
+      function main() {
+        window.addEventListener(
+          "message",
+          event => (document.getElementById("receive").innerHTML = event.data)
+        );
+      }
+
+      const pre = document.getElementById("code");
+
+      if (pre) {
+        pre.innerHTML = main.toString();
+        pre.style.backgroundColor = "#b5ffe6";
+        pre.style.padding = "1rem";
+        pre.style.borderRadius = "10px";
+        pre.style.overflowX = "auto";
+      }
+    </script>
+  </body>
+</html>
