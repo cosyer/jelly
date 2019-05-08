@@ -60,3 +60,4 @@
 [**ring**：基于threejs的定制戒指](https://cosyer.github.io/jelly/ring/)<br>
 [**seven-pieces**：七巧板](https://cosyer.github.io/jelly/seven-pieces/)<br>
 [**multi-pages**：多页面通信](https://cosyer.github.io/jelly/multi-pages/)<br>
+[**drag-drop**：拖拽](https://cosyer.github.io/jelly/drag-drop/)<br>
