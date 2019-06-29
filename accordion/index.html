@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .panel {
+        width: 555px;
+        height: auto;
+        background-color: #333333;
+        margin: 50px auto;
+      }
+
+      .panel-title {
+        width: 100%;
+        height: 68px;
+        text-align: center;
+        font: 600 18px/68px "微软雅黑";
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .collapse {
+        width: 100%;
+        height: 0;
+        background-color: #167ea0;
+        overflow: hidden;
+      }
+
+      .collapse p {
+        color: #fff;
+        font: 500 16px "微软雅黑";
+        text-indent: 2em;
+        padding: 20px 20px 0 20px;
+      }
+
+      #One,
+      #Tow,
+      #Three {
+        border-top: solid 1px #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="panel" id="panel">
+      <h4 class="panel-title" id="panel-title">1 《抉择》</h4>
+      <div class="collapse" id="One">
+        <p></p>
+      </div>
+      <h4 class="panel-title" id="panel-title">2 《生命》</h4>
+      <div class="collapse" id="Tow">
+        <p></p>
+      </div>
+      <h4 class="panel-title" id="panel-title">3 《大小》</h4>
+      <div class="collapse" id="Three">
+        <p></p>
+      </div>
+      <h4 class="panel-title" id="panel-title">4 《崇拜》</h4>
+      <div class="collapse" id="Four">
+        <p></p>
+      </div>
+    </div>
+  </body>
+  <script>
+    function animate(obj, json, endFn) {
+      //关闭上一个定时器
+      clearInterval(obj.timer);
+      //管理定时器
+      obj.timer = setInterval(function() {
+        //定时器开关 ,用来判断是否定时定时器
+        var flag = true;
+        //遍历json
+        for (var arrt in json) {
+          //计算步长 步长 = 目标位置 - 当前位置
+          var step = (json[arrt] - parseInt(getStyle(obj, arrt))) / 5;
+          //步长取整
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          //盒子移动: 盒子现在的位置 + 步长取整
+          obj.style[arrt] = parseInt(getStyle(obj, arrt)) + step + "px";
+
+          //只要其中一个不满足条件，就不停止定时器
+          if (parseInt(getStyle(obj, arrt)) != json[arrt]) {
+            flag = false;
+          }
+        }
+        //关闭定时器
+        if (flag) {
+          clearInterval(obj.timer);
+          //2秒后执行回调函数
+          setTimeout(function() {
+            //判断是否有回调函数，有endFn 再执行回调函数
+            endFn && endFn();
+          }, 1000);
+        }
+      }, 20);
+    }
+    //获得现在的样式
+    function getStyle(obj, arrt) {
+      //兼容ie
+      return obj.currentStyle
+        ? obj.currentStyle[arrt]
+        : getComputedStyle(obj, null)[arrt];
+    }
+    var panel = document.getElementById("panel");
+    var oH = panel.getElementsByTagName("h4");
+    var oDiv = panel.getElementsByTagName("div");
+    var str = [
+      "人的一生常处于抉择之中，如：念哪一间大学？选哪一种职业？娶哪一种女子？……等等伤脑筋的事情。一个人抉择力的有无，可以显示其人格成熟与否。倒是哪些胸无主见的人，不受抉择之苦。因为逢到需要决定的时候，他总是求询别人说：'嘿，你看怎么做？'大凡能够成大功业的人，都是抉择力甚强的人。他知道事之成败，全在乎已没有人可以代劳，更没有人能代你决定。在抉择的哪一刻，成败实已露出端倪。",
+      "生命，也许是宇宙之间唯一应该受到崇拜的因素。生命的孕育、诞生和显示本质是一种无比激动人心的过程。生命像音乐和画面一样暗自挟带着一种命定的声调或血色，当它遇到大潮的袭卷，当它听到号角的催促时，它会顿时抖擞，露出本质的绚烂和激昂。当然，这本质更可能是卑污、懦弱、乏味的;它的主人并无选择的可能。应当承认，生命就是希望。应当说，卑鄙和庸俗不该得意过早，不该误认为它们已经成功地消灭了高尚和真纯。伪装也同样不能持久，因为时间像一条长河在滔滔冲刷，卑鄙者、奸商和俗棍不可能永远戴着教育家、诗人和战士的桂冠。在他们畅行无阻的生涯尽头，他们的后人将长久地感到羞辱。",
+      "一位朋友谈到他亲戚的姑婆，一生从来没有穿过合脚的鞋子，常穿着巨大的鞋子走来走去。儿子晚辈如果问她，她就会说：'大小鞋都是一样的价钱，为什么不买大的？'每次我转述这个故事，总有一些人笑得岔了气。其实，在生活里我们会看到很多这样的'姑婆'。没有什么思想的作家，偏偏写着厚重苦涩的作品;没有什么内容的画家，偏偏画着超级巨画;经常不在家的商人，却有非常巨大的家园。许多人不断地追求巨大，其实只是被内在贪欲推动着，就好像买了特大号的鞋子，忘了自己的脚一样。不管买什么鞋子，合脚最重要，不论追求什么，总要适可而止。",
+      "我崇拜高尚的生命的秘密。我崇拜这生命在降生、成长、战斗、伤残、牺牲时迸溅出的钢花焰火。我崇拜一个活灵灵的生命在崇山大河，在海洋和大陆上飘荡的自由。是的，生命就是希望。它飘荡无定，自由自在，它使人类中总有一支血脉不甘于失败，九死不悔地追寻着自己的金牧场。"
+    ];
+    for (var i = 0; i < oH.length; i++) {
+      oH[i].index = i;
+      oH[i].onclick = function() {
+        for (var j = 0; j < oH.length; j++) {
+          animate(oDiv[j], {
+            height: 0
+          });
+        }
+        if (parseInt(getStyle(oDiv[this.index], "height")) == 0) {
+          animate(oDiv[this.index], {
+            height: 210
+          });
+          oDiv[this.index].children[0].innerHTML = str[this.index];
+        } else {
+          animate(oDiv[this.index], {
+            height: 0
+          });
+        }
+      };
+    }
+  </script>
+</html>
