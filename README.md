@@ -63,3 +63,4 @@
 [**drag-drop**：拖拽](https://cosyer.github.io/jelly/drag-drop/)<br>
 [**gossip**：八卦](https://cosyer.github.io/jelly/gossip/)<br>
 [**accordion**：手风琴](https://cosyer.github.io/jelly/accordion/)<br>
+[**text-select**：文本域文字内容指定选中实例页面](https://cosyer.github.io/jelly/text-select/)<br>

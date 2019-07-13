@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>文本域文字内容指定选中实例页面</title>
+    <style>
+      textarea {
+        font-size: 1em;
+        width: 500px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="target"></textarea>
+    <p><button id="btn">插入话题</button></p>
+
+    <textarea id="t" style="width:500px; height:100px;">
+麦当劳wifi热点的账号密码及连接设置（全国通用）。麦当劳的免费热点是隐藏wifi，需要手动添加才行。 麦当劳的wifi账号：McDonald-OC wifi密码：Ac28Idfjla92ifjsl3jsHdowIo</textarea
+    >
+    <p>
+      输入起始值：<input type="text" id="a" /> 输入结束值：<input
+        type="text"
+        id="b"
+      />
+    </p>
+    <p><button id="btn2">执行</button></p>
+  </body>
+  <script>
+    var $ = function(id) {
+      return document.getElementById(id);
+    };
+    $("btn").onclick = function() {
+      var con = "请在这里输入自定义话题";
+      //转载文字
+      $("target").value += "#" + con + "#";
+      var l = $("target").value.length;
+      //创建选择区域
+      if ($("target").createTextRange) {
+        //IE浏览器
+        var range = $("target").createTextRange();
+        range.moveEnd("character", -l);
+        //range.moveStart("character",-l)
+        range.moveEnd("character", l - 1);
+        range.moveStart("character", l - 1 - con.length);
+        range.select();
+      } else {
+        $("target").setSelectionRange(l - 1 - con.length, l - 1);
+        $("target").focus();
+      }
+    };
+
+    var textSelect = function(o, a, b) {
+      //o是当前对象，例如文本域对象
+      //a是起始位置，b是终点位置
+      var a = parseInt(a, 10),
+        b = parseInt(b, 10);
+      var l = o.value.length;
+      if (l) {
+        //如果非数值，则表示从起始位置选择到结束位置
+        if (!a) {
+          a = 0;
+        }
+        if (!b) {
+          b = l;
+        }
+        //如果值超过长度，则就是当前对象值的长度
+        if (a > l) {
+          a = l;
+        }
+        if (b > l) {
+          b = l;
+        }
+        //如果为负值，则与长度值相加
+        if (a < 0) {
+          a = l + a;
+        }
+        if (b < 0) {
+          b = l + b;
+        }
+        if (o.createTextRange) {
+          //IE浏览器
+          var range = o.createTextRange();
+          range.moveStart("character", -l);
+          range.moveEnd("character", -l);
+          range.moveStart("character", a);
+          range.moveEnd("character", b);
+          range.select();
+        } else {
+          o.setSelectionRange(a, b);
+          o.focus();
+        }
+      }
+    };
+
+    $("btn2").onclick = function() {
+      var a = $("a").value;
+      var b = $("b").value;
+      textSelect($("t"), a, b);
+    };
+  </script>
+</html>
