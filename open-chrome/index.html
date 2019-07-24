@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ie跳转chrome</title>
+  </head>
+  <body>
+    <button onclick="test()">点击打开chrome浏览器</button>
+    <input type="file" id="inputBox" />
+    <img src="" id="img" />
+    <script>
+      function test() {
+        /*
+         *创建ActiveXObject实例，只在IE下有效，才可以创建
+         */
+        var objShell = new ActiveXObject("WScript.Shell");
+        /*
+         *命令参数说明
+         *cmd.exe /c dir 是执行完dir命令后关闭命令窗口。
+         *cmd.exe /k dir 是执行完dir命令后不关闭命令窗口。
+         *cmd.exe /c start dir 会打开一个新窗口后执行dir指令，原窗口会关闭。
+         *cmd.exe /k start dir 会打开一个新窗口后执行dir指令，原窗口不会关闭。
+         *这里的dir是start chrome www.baidu.com//用谷歌浏览器打开百度
+         */
+        objShell.Run("cmd.exe /c start chrome www.baidu.com", 0, true);
+        // 前端下载 blob URL.createObjectURL
+        var filename = "123.txt";
+        var csv = "123123123123";
+        var blob = new Blob([csv], {
+          type: "text/plain;charset=utf-8;"
+        });
+        if (window.navigator.msSaveOrOpenBlob) {
+          // IE
+          window.navigator.msSaveOrOpenBlob(blob, filename);
+        } else {
+          var link = document.createElement("a");
+          link.style.display = "none";
+          var isFF = window.navigator.userAgent.indexOf("Firefox") > -1;
+          if (isFF) {
+            document.body.appendChild(link);
+          }
+          if (typeof link.download !== "undefined") {
+            link.setAttribute("href", URL.createObjectURL(blob));
+            link.setAttribute("download", filename);
+            link.click();
+          } else {
+            window.open(encodeURI("data:text/palin;charset=utf-8," + csv));
+          }
+          if (isFF) {
+            document.body.removeChild(link);
+          }
+        }
+      }
+      var inputBox = document.getElementById("inputBox");
+      var img = document.getElementById("img");
+      inputBox.addEventListener("change", function() {
+        var reader = new FileReader();
+        reader.readAsDataURL(inputBox.files[0]); // 发起异步请求 canvas.toDataURL URL.createObjectURL
+        reader.onload = function() {
+          // 读取完成后，将结果赋值给img的src data:image/png;base64,
+          console.log(this.result);
+          img.src = this.result;
+        };
+      });
+    </script>
+  </body>
+</html>
