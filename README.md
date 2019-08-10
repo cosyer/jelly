@@ -65,3 +65,4 @@
 [**accordion**：手风琴](https://cosyer.github.io/jelly/accordion/)<br>
 [**text-select**：文本域文字内容指定选中实例页面](https://cosyer.github.io/jelly/text-select/)<br>
 [**open-chrome**：ie跳转chrome](https://cosyer.github.io/jelly/open-chrome/)<br>
+[**contribution**：contribution](https://cosyer.github.io/jelly/contribution/)<br>

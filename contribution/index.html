@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Contribution Graph</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://assets-cdn.github.com/favicon.ico"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <style type="text/css">
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      .year,
+      .graph {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        height: calc(8 * 24px);
+        width: calc(33 * 24px);
+        display: flex;
+      }
+      .year {
+        justify-content: space-between;
+        font-family: Arial;
+        top: -60px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #c7c7c7;
+      }
+      .graph {
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: flex-start;
+      }
+      button {
+        width: 20px;
+        height: 20px;
+        margin: 2px;
+        border: 0;
+        padding: 0;
+        outline: 0;
+        cursor: pointer;
+      }
+      .type-0 {
+        background-color: transparent;
+      }
+      .type-1 {
+        background-color: #eeeeee;
+      }
+      .type-2 {
+        background-color: #d6e685;
+      }
+      .type-3 {
+        background-color: #8ac760;
+      }
+      .type-4 {
+        background-color: #40a43a;
+      }
+      .type-5 {
+        background-color: #1e6823;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="year">
+      <span>2014</span><span>2015</span><span>2016</span><span>2017</span
+      ><span>2018</span><span>2019</span>
+    </div>
+    <div class="graph">
+      <button class="type-0"></button>
+    </div>
+    <script type="text/javascript">
+      const template =
+        "01111111111111111111111111111111111122222422253252522224522422253222422525222342222222222533543252222225422222243222222325222242222222222522254252422225522322253222322524222452222222225435355452252225422522235223222432222225222222222222111111111111111111111111111";
+      const graph = document.getElementsByClassName("graph")[0];
+      const buttons = document.getElementsByTagName("button");
+      const start = new Date(2013, 11, 30).getTime();
+      const end = new Date(2018, 11, 31).getTime();
+      const enter = new Date(2014, 8, 1).getTime();
+      const graduate = new Date(2018, 5, 30).getTime();
+
+      for (let time = start; time <= end; time += 7 * 24 * 3600 * 1000) {
+        let button = document.createElement("button");
+        button.title = new Date(time).toString().slice(0, 15);
+        button.className = `type-${
+          time < enter || time > graduate ? "1" : "2"
+        }`;
+        button.onclick = () => {
+          let type = parseInt(button.className.match(/\d+/));
+          button.className = `type-${(type + 1) % 6}`;
+        };
+        graph.appendChild(button);
+      }
+      window.onbeforeunload = () => {
+        let pattern = Array.from(document.getElementsByTagName("button"))
+          .map(element => parseInt(element.className.match(/\d+/)))
+          .join("");
+        localStorage.setItem("pattern", pattern);
+      };
+      window.onload = () => {
+        buttons[0].title = "Clear";
+        buttons[0].onclick = () => {
+          window.onbeforeunload = null;
+          localStorage.setItem("pattern", "");
+          window.location.reload();
+        };
+        buttons[0].oncontextmenu = event => {
+          event.preventDefault();
+          window.onbeforeunload = null;
+          localStorage.setItem("pattern", template);
+          window.location.reload();
+        };
+        let pattern = localStorage.getItem("pattern");
+        pattern = pattern == null ? template : pattern;
+        pattern
+          .split("")
+          .forEach(
+            (type, index) => (buttons[index].className = `type-${type}`)
+          );
+      };
+    </script>
+  </body>
+</html>
