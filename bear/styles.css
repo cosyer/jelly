@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::after {
+  box-sizing: border-box;
+}
+
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-wrapper {
+  flex-grow: 1;
+  height: 50%;
+  padding: 10px;
+  border-bottom: 1px solid #594a41;
+}
+
+.preview-wrapper {
+  flex: 1;
+  border: 1px solid black;
+}
+
+#code {
+  overflow: hidden;
+  height: 100%;
+}
+
+.actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions > button {
+  margin: 10px;
+  padding: 8px 10px;
+  border: none;
+  background: #ddd;
+}
+
+.actions > button.active {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.actions > button:focus {
+  outline: none;
+}
