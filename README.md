@@ -131,3 +131,5 @@
 [**contribution**：contribution](https://cosyer.github.io/jelly/contribution/)
 
 [**bear**：zzz](https://cosyer.github.io/jelly/bear/)
+
+[**命运石之门**：el-psy-congroo](https://cosyer.github.io/jelly/el-psy-congroo/)
