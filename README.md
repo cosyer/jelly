@@ -130,4 +130,4 @@
 
 [**contribution**：contribution](https://cosyer.github.io/jelly/contribution/)
 
-[**bear**: zzz](https://cosyer.github.io/jelly/bear/)
+[**bear**：zzz](https://cosyer.github.io/jelly/bear/)
