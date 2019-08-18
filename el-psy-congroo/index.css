@@ -1,5 +1,8 @@
-
-html, body, div, span, img {
+html,
+body,
+div,
+span,
+img {
   margin: 0;
   padding: 0;
   border: 0;
@@ -7,7 +10,8 @@ html, body, div, span, img {
   font: inherit;
   vertical-align: baseline;
 }
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   line-height: 1;
@@ -28,7 +32,7 @@ html, body {
   width: 1rem;
   padding-top: 3rem;
   position: relative;
-  transition: all .5s ease-out;
+  transition: all 0.5s ease-out;
 }
 img {
   position: absolute;
@@ -36,5 +40,5 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  transition: all .5s ease-out;
+  transition: all 0.5s ease-out;
 }
