@@ -1,0 +1,272 @@
+@charset "utf-8";
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f2f2f2;
+}
+body {
+  max-width: 1024px;
+  max-height: 768px;
+  margin: 0 auto;
+  font: 0.85em/1.4 "microsoft yahei", tahoma, "arial, helvetica, sans-serif";
+  color: #666;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+a,
+img {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+h2 {
+  margin: 0;
+  text-align: center;
+}
+.fl {
+  float: left;
+}
+.oh {
+  overflow: hidden;
+}
+.dn {
+  display: none;
+}
+
+#mainBox {
+  width: 92%;
+  height: 80%;
+  margin: 20px auto auto;
+}
+.mainBoxLf {
+  width: 198px;
+  height: 450px;
+  overflow: auto;
+  text-align: center;
+  position: relative;
+}
+.mainBoxLf .jName {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 100%;
+  padding: 5px 0;
+  display: inline-block;
+  margin-bottom: 5px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #006421;
+  color: #fff;
+  font-size: 24px;
+}
+.mainBoxLf li.disabled .jName,
+.subMenu li a.disabled {
+  background-color: #898989;
+}
+.subMenu li {
+  width: 100%;
+  background-color: #159a41;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  cursor: pointer;
+  display: none;
+}
+.subMenu li.active {
+  background-color: #b2a511;
+}
+#mainMenus li.active .subMenu li {
+  display: block;
+}
+#mainMenus li.active .subMenu li a {
+  width: 100%;
+  border-radius: 5px;
+  padding: 9px 0;
+  display: inline-block;
+  color: #fff;
+}
+.mainBoxRt {
+  margin-left: 230px;
+  height: 90%;
+}
+.mainBoxRt h2 img {
+  width: 24%;
+  margin-bottom: 5px;
+}
+.winningList {
+  display: none;
+}
+#winningList {
+  width: 100%;
+  height: 85%;
+  padding: 3% 0;
+  border-top: 1px solid #d5d4cd;
+}
+#winningListA {
+  display: block;
+}
+#winningListA ul {
+  width: 100%;
+  overflow: hidden;
+}
+#winningListA li {
+  float: left;
+  width: 20%;
+  margin-bottom: 2%;
+  text-align: center;
+}
+#winningListA li strong,
+#winningListA li small,
+#winningListB strong,
+#winningListB small,
+#winningListB span {
+  width: 100%;
+  display: block;
+}
+#winningListA li strong {
+  color: #1b1b1b;
+  font-size: 22px;
+}
+#winningListA li small {
+  color: #066723;
+  font-size: 12px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#winningListB {
+  text-align: center;
+  padding-top: 2%;
+}
+#winningListB strong {
+  font-size: 52px;
+  color: #1b1b1b;
+  letter-spacing: 20px;
+  margin-bottom: 5px;
+}
+#winningListB small {
+  color: #066723;
+  font-size: 24px;
+}
+#winningListB span {
+  color: #1b1b1b;
+  font-size: 18px;
+  margin-top: 5px;
+}
+.empty {
+  color: #333;
+  font-size: 18px;
+  margin-top: 35px;
+  text-align: center;
+}
+.mainBoxRtTop {
+  position: relative;
+}
+.sBtn {
+  width: 10%;
+  padding: 5px 10px;
+  font-size: 18px;
+  letter-spacing: 4px;
+  display: inline-block;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.sBtn#start {
+  background-color: #006421;
+}
+.sBtn#stop {
+  background-color: #ff0000;
+}
+.sBtn:hover {
+  opacity: 0.8;
+  -webkit-opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+
+/* animation */
+.dw {
+  -webkit-animation: dw 0.8s ease both;
+  animation: dw 0.8s ease both;
+}
+@-webkit-keyframes dw {
+  from {
+    opacity: 0.3;
+    -webkit-transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+@keyframes dw {
+  from {
+    opacity: 0.3;
+    transform: translateY(-100%) rotateX(-90deg);
+  }
+}
+
+ul[data-liffect="bounceIn"] li {
+  opacity: 0;
+  position: relative;
+  -webkit-animation: bounceIn 600ms ease both;
+  -webkit-animation-play-state: paused;
+  -moz-animation: bounceIn 600ms ease both;
+  -moz-animation-play-state: paused;
+  -o-animation: bounceIn 600ms ease both;
+  -o-animation-play-state: paused;
+  animation: bounceIn 600ms ease both;
+  animation-play-state: paused;
+}
+ul[data-liffect="bounceIn"].play li {
+  -webkit-animation-play-state: running;
+  -moz-animation-play-state: running;
+  -o-animation-play-state: running;
+  animation-play-state: running;
+}
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+  }
+  70% {
+    -webkit-transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

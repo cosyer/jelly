@@ -133,3 +133,5 @@
 [**bear**：zzz](https://cosyer.github.io/jelly/bear/)
 
 [**命运石之门**：el-psy-congroo](https://cosyer.github.io/jelly/el-psy-congroo/)
+
+[**roll-lottery**：滚动型抽奖](https://cosyer.github.io/jelly/roll-lottery/)
