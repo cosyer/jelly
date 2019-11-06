@@ -139,3 +139,5 @@
 [**tiktok**：抖音logo](https://cosyer.github.io/jelly/tiktok/)
 
 [**shield**：美队盾牌🛡](https://cosyer.github.io/jelly/shield/)
+
+[**swtich-tab**：纯css实现tab切换](https://cosyer.github.io/jelly/swtich-tab/)
