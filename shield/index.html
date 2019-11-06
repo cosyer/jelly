@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .usa {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        height: 400px;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0) 35%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 65%
+          ),
+          linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0) 35%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0) 65%
+          ),
+          linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0) 35%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0) 65%
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 35%,
+            rgba(0, 0, 0, 0.2) 50%,
+            rgba(0, 0, 0, 0) 65%
+          ),
+          radial-gradient(
+            ellipse at center,
+            #0033b0 20%,
+            #ce0021 20%,
+            #ce0021 35%,
+            #eee 35%,
+            #eee 55%,
+            #ce0021 55%
+          );
+        border-radius: 50%;
+        box-shadow: 0 3px 0 #a20917, 0 4px 2px 2px #eee;
+      }
+      .usa:before {
+        content: "★";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin-left: -6px;
+        width: 100px;
+        height: 100px;
+        font-family: simsun;
+        line-height: 94px;
+        z-index: 1;
+        border-radius: 50%;
+        font-size: 110px;
+        color: #fff;
+        text-align: center;
+        text-shadow: 2px 1px 2px #777;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="usa"></section>
+  </body>
+</html>

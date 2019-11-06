@@ -137,3 +137,5 @@
 [**roll-lottery**：滚动型抽奖](https://cosyer.github.io/jelly/roll-lottery/)
 
 [**tiktok**：抖音logo](https://cosyer.github.io/jelly/tiktok/)
+
+[**shield**：美队盾牌🛡](https://cosyer.github.io/jelly/shield/)
