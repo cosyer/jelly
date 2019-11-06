@@ -142,4 +142,6 @@
 
 [**swtich-tab**：纯css实现tab切换](https://cosyer.github.io/jelly/swtich-tab/)
 
-[**breath-loading**：纯css实现tab切换](https://cosyer.github.io/jelly/breath-loading/)
+[**breath-loading**：呼吸灯加载loading](https://cosyer.github.io/jelly/breath-loading/)
+
+[**flag**：五星红旗](https://cosyer.github.io/jelly/flag/)
