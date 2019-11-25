@@ -145,3 +145,5 @@
 [**breath-loading**：呼吸灯加载loading](https://cosyer.github.io/jelly/breath-loading/)
 
 [**flag**：五星红旗](https://cosyer.github.io/jelly/flag/)
+
+[**add-flag**：给你的头像右下角加上小红旗图标 :)](https://cosyer.github.io/jelly/add-flag/)
