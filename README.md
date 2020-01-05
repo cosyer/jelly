@@ -140,7 +140,7 @@
 
 [**shield**：美队盾牌🛡](https://cosyer.github.io/jelly/shield/)
 
-[**swtich-tab**：纯css实现tab切换](https://cosyer.github.io/jelly/swtich-tab/)
+[**switch-tab**：纯css实现tab切换](https://cosyer.github.io/jelly/switch-tab/)
 
 [**breath-loading**：呼吸灯加载loading](https://cosyer.github.io/jelly/breath-loading/)
 
