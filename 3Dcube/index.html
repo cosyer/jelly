@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background: #66677c;
+        text-align: center;
+      }
+      .container {
+        width: 300px;
+        height: 300px;
+        margin: 50px auto 150px;
+        perspective: 1200px;
+      }
+      .container .box {
+        width: 300px;
+        height: 300px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+      }
+      .container .box .pic {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 300px;
+        height: 300px;
+        box-shadow: 0px 0px 5px #fff;
+      }
+      .container .box .pic img {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+      .container .box .pic:nth-child(1) {
+        transform: translateZ(150px);
+      }
+      .container .box .pic:nth-child(2) {
+        transform: rotateY(-180deg) translateZ(150px);
+      }
+      .container .box .pic:nth-child(3) {
+        transform: rotateY(90deg) translateZ(150px);
+      }
+      .container .box .pic:nth-child(4) {
+        transform: rotateY(-90deg) translateZ(150px);
+      }
+      .container .box .pic:nth-child(5) {
+        transform: rotateX(90deg) translateZ(150px);
+      }
+      .container .box .pic:nth-child(6) {
+        transform: rotateX(-90deg) translateZ(150px);
+      }
+      h1 {
+        color: #fff;
+        font-size: 30px;
+        margin-bottom: 30px;
+      }
+      .btn {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px;
+        grid-gap: 15px;
+      }
+      .btn input {
+        width: 100px;
+        height: 100px;
+        outline: none;
+        border: 2px solid #fff;
+      }
+      .btn input:focus {
+        border: 2px solid #e70;
+      }
+      .default {
+        transform: translateZ(-150px) rotateX(-10deg) rotateY(15deg);
+      }
+      .image1 {
+        transform: translateZ(-150px) rotateX(0deg) rotateY(0deg);
+      }
+      .image2 {
+        transform: translateZ(-150px) rotateY(-180deg);
+      }
+      .image3 {
+        transform: translateZ(-150px) rotateY(-90deg);
+      }
+      .image4 {
+        transform: translateZ(-150px) rotateY(90deg);
+      }
+      .image5 {
+        transform: translateZ(-150px) rotateX(-90deg);
+      }
+      .image6 {
+        transform: translateZ(-150px) rotateX(90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box default">
+        <div class="pic"><img src="img/1.jpeg" alt="" /></div>
+        <div class="pic"><img src="img/2.jpeg" alt="" /></div>
+        <div class="pic"><img src="img/3.jpeg" alt="" /></div>
+        <div class="pic"><img src="img/4.jpeg" alt="" /></div>
+        <div class="pic"><img src="img/5.jpeg" alt="" /></div>
+        <div class="pic"><img src="img/6.jpeg" alt="" /></div>
+      </div>
+    </div>
+    <h1>点击下面的图片按钮切换</h1>
+    <div class="btn">
+      <input type="image" class="1" src="img/1.jpeg" />
+      <input type="image" class="2" src="img/2.jpeg" />
+      <input type="image" class="3" src="img/3.jpeg" />
+      <input type="image" class="4" src="img/4.jpeg" />
+      <input type="image" class="5" src="img/5.jpeg" />
+      <input type="image" class="6" src="img/6.jpeg" />
+    </div>
+    <script>
+      (function() {
+        var btn = document.getElementsByClassName("btn")[0];
+        var box = document.getElementsByClassName("box")[0];
+        btn.addEventListener("click", function(e) {
+          var className = e.target.className;
+          if (className !== "btn") {
+            box.style = "";
+            box.classList.replace(box.classList[1], "image" + className);
+          }
+        });
+        //鼠标拖动效果
+        var xN = 10,
+          yN = 15;
+        document.addEventListener("mousedown", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var x = e.clientX;
+          var y = e.clientY;
+          document.addEventListener("mousemove", move);
+          document.addEventListener("mouseup", up);
+          function move(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var x1 = e.clientX;
+            var y1 = e.clientY;
+            xN += (x1 - x) * 0.04;
+            yN += (y1 - y) * 0.04;
+            box.style.transform =
+              "translateZ(-150px) rotateY(" +
+              xN +
+              "deg) rotateX(" +
+              -yN +
+              "deg)";
+          }
+          function up() {
+            document.removeEventListener("mousemove", move);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

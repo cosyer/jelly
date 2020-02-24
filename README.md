@@ -132,7 +132,7 @@
 
 [**bear**：zzz](https://cosyer.github.io/jelly/bear/)
 
-[**命运石之门**：el-psy-congroo](https://cosyer.github.io/jelly/el-psy-congroo/)
+[**el-psy-congroo**：命运石之门](https://cosyer.github.io/jelly/el-psy-congroo/)
 
 [**roll-lottery**：滚动型抽奖](https://cosyer.github.io/jelly/roll-lottery/)
 
@@ -147,3 +147,5 @@
 [**flag**：五星红旗](https://cosyer.github.io/jelly/flag/)
 
 [**add-flag**：给你的头像右下角加上小红旗图标 :)](https://cosyer.github.io/jelly/add-flag/)
+
+[**3Dcube**：3D魔方](https://cosyer.github.io/jelly/3Dcube/)
