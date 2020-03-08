@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-color: rgb(108, 136, 136);
+      }
+
+      #child {
+        width: 100%;
+        height: 20vh;
+      }
+    </style>
+    <title>两个页面通信</title>
+  </head>
+
+  <body>
+    <h1>两个页面通信</h1>
+    <iframe id="child" src="./child.html" frameborder="0"></iframe>
+    <form id="form">
+      <input type="text" id="input" />
+      <button>发送</button>
+    </form>
+    <script>
+      const targetOrigin = "*";
+      document.getElementById("form").onsubmit = event => {
+        event.preventDefault();
+        const value = document.getElementById("input").value;
+        document
+          .getElementById("child")
+          .contentWindow.postMessage(value, targetOrigin);
+      };
+      // 父级页面调用子级页面
+      // document.getElementById("iframeID").contentWindow.fn()
+      // 子级调用父级
+      // window.parent.fn()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        background-color: aquamarine;
+      }
+    </style>
+    <title>child</title>
+  </head>
+
+  <body>
+    child
+    <div id="receive"></div>
+    <script>
+      window.addEventListener(
+        "message",
+        event => (document.getElementById("receive").innerHTML = event.data)
+      );
+    </script>
+  </body>
+</html>
