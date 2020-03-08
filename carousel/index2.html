@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      /**
+        * 轮播图由三层组成
+        * container > content > items
+        * container为视口，content为内容整体，item为内容单元
+        * container的宽度要与item宽度相等
+        * content的宽度 = item数量 * item宽度
+        */
+      .container {
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+        position: relative;
+      }
+
+      .container > .content {
+        width: 400px;
+        height: 100%;
+        font-size: 0;
+        position: absolute;
+        left: 100px;
+        transition-duration: 1s;
+      }
+
+      .content > .item {
+        width: 100px;
+        height: 100%;
+        background-color: chocolate;
+        display: inline-block;
+        font-size: 1rem;
+      }
+    </style>
+    <title>js轮播图</title>
+  </head>
+
+  <body>
+    <h1>js轮播图</h1>
+    <div id="slider">
+      <div class="container">
+        <div class="content">
+          <div class="item"><a href="#">1</a></div>
+          <div class="item"><a href="#">2</a></div>
+          <div class="item"><a href="#">3</a></div>
+          <div class="item"><a href="#">4</a></div>
+        </div>
+      </div>
+      <button id="left">left</button>
+      <button id="right">right</button>
+      <span id="menu">
+        <span id="1">1</span>
+        <span id="2">2</span>
+        <span id="3">3</span>
+        <span id="4">4</span>
+      </span>
+    </div>
+    <script>
+      function main() {
+        /*
+         * @Author: saber2pr
+         * @Date: 2019-04-28 20:36:22
+         * @Last Modified by: saber2prpr
+         * @Last Modified time: 2019-04-28 21:39:2901
+         */
+        class Slider {
+          /**
+           * @param {HTMLElement} element
+           */
+          constructor(element, interval = 1000, startPos = 0) {
+            this._content = element;
+            this._startPos = startPos;
+            this._current = startPos;
+            this._interval = interval;
+            this._isPaused = false;
+          }
+          get width() {
+            return this._content.clientWidth;
+          }
+          get length() {
+            return this._content.children.length;
+          }
+          get step() {
+            return this.width / this.length;
+          }
+          goto(offset) {
+            if (offset > 0 || offset < -this.width) return;
+            this._current = offset;
+            return this;
+          }
+          end() {
+            this._content.style.left = `${this._current}px`;
+            return this;
+          }
+          last() {
+            this.goto(this._current + this.step);
+            return this;
+          }
+          next() {
+            this.goto(this._current - this.step);
+            return this;
+          }
+          _update() {
+            if (this._isPaused) return;
+            if (this._current === -this.width) {
+              this.goto(this._startPos).end();
+            } else {
+              this.next().end();
+            }
+          }
+          start() {
+            this.end();
+            this.schedule = setInterval(
+              this._update.bind(this),
+              this._interval
+            );
+            return this;
+          }
+          pause() {
+            this._isPaused = true;
+            return this;
+          }
+          resume() {
+            this._isPaused = false;
+            return this;
+          }
+          stop() {
+            clearInterval(this.schedule);
+            return this;
+          }
+        }
+        /**
+         * @param {string} selector
+         * @returns {HTMLElement}
+         */
+        const $ = selector => document.querySelector(selector);
+        const base = $("#slider");
+        const content = $(".container>.content");
+        const leftBtn = $("#left");
+        const rightBtn = $("#right");
+        const slider = new Slider(content).start();
+        base.addEventListener("mouseover", () => slider.pause());
+        base.addEventListener("mouseout", () => slider.resume());
+        leftBtn.addEventListener("click", () => slider.next().end());
+        rightBtn.addEventListener("click", () => slider.last().end());
+        const menu = $("#menu");
+        // 事件代理
+        menu.addEventListener("mouseover", event => {
+          switch (Number(event.target.id)) {
+            case 1:
+              slider.goto(0).end();
+              break;
+            case 2:
+              slider.goto(-slider.step).end();
+              break;
+            case 3:
+              slider.goto(-slider.step * 2).end();
+              break;
+            case 4:
+              slider.goto(-slider.step * 3).end();
+              break;
+            default:
+              break;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
