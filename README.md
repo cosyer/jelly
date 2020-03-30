@@ -151,3 +151,5 @@
 [**3Dcube**：3D魔方](https://cosyer.github.io/jelly/3Dcube/)
 
 [**post-message**：iframe通信](https://cosyer.github.io/jelly/post-message/)
+
+[**button-text-staggered-sliding-effects**：按钮文字滑动](https://cosyer.github.io/jelly/button-text-staggered-sliding-effects/)
