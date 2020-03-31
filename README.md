@@ -153,3 +153,5 @@
 [**post-message**：iframe通信](https://cosyer.github.io/jelly/post-message/)
 
 [**button-text-staggered-sliding-effects**：按钮文字滑动](https://cosyer.github.io/jelly/button-text-staggered-sliding-effects/)
+
+[**rectangular-rotating-loader-animation**：矩形旋转 loader 特效](https://cosyer.github.io/jelly/rectangular-rotating-loader-animation/)
