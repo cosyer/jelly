@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-cn">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>给你的一封信</title>
+    <script
+      src="js/modernizr.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <!--[if IE 8]>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          $("#contact").addClass("target");
+          $("#flip2back, #close").click(function (e) {
+            $(".target").removeClass("target");
+            e.preventDefault();
+          });
+          $("#open, #flip").click(function (e) {
+            var $anchor = $(this);
+            $($anchor.attr("href")).addClass("target");
+            e.preventDefault();
+          });
+        });
+      </script>
+    <![endif]-->
+
+    <link href="css/mail_style.css" rel="stylesheet" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Satisfy"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <section class="container" id="contact">
+      <form class="flip">
+        <div class="front">
+          <h2>Destination</h2>
+          <p>Jiang's Heart</p>
+          <p>212000 Zhenjiang China</p>
+          <a id="flip2back" href="#">Open !</a>
+        </div>
+        <div id="content" class="back">
+          <div id="letter">
+            <div class="container">
+              <div class="flip">
+                <div class="front"></div>
+                <div class="back">
+                  时间过得真快啊，我们已经认识一年多了吧！其实吧，很多话还是憋在心里，想和你说却又不敢...
+                  <a id="close" href="#">Close</a>
+                </div>
+              </div>
+            </div>
+            <div type="K">
+              亲爱的 周：
+              <br />
+              还记得曾经有一天你问我，喜欢你，会后悔吗，因为不会有结果。时间如流水，但我依旧无法改变的曾经的想法。是的，我不会后悔，也许这就是我最后的一点倔强吧。
+              <br />
+              <br />
+              像是下雨时突降大雨，手边恰好有伞；
+              <br />
+              夜晚肚子饿了，发现冰箱里还有甜食。
+              <br />
+              只要想起这个世界有你的存在，我就有勇气继续向前。
+              <br />
+              <div style="direction: rtl;">
+                爱你的 陈
+              </div>
+            </div>
+            <button onclick="window.open('May.html')">打开附件</button>
+          </div>
+          <div id="top">
+            <a id="flip" href="#contact">Flip</a>
+          </div>
+          <div id="lid" class="container">
+            <div class="flip">
+              <div class="front">
+                <div>
+                  <label>To: Miss. Zhou</label>
+                </div>
+                <div>
+                  <label>From: Mr. Shi</label>
+                </div>
+                <a id="open" href="#content">Open</a>
+              </div>
+              <div class="back"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>

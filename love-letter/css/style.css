@@ -1,0 +1,136 @@
+body {
+  /*background: #F6F6F6 !important;*/
+  background-image: url(http://r.droidbeta.com/kkk.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+.container > header {
+  margin: 0 auto;
+  padding: 10em 0em;
+  text-align: center;
+}
+.container > header h1 {
+  font-size: 70px;
+  margin: 0;
+  font-weight: bold;
+  font-family: "Open Sans", Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+}
+.container > header span {
+  display: block;
+  font-size: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Open Sans", Arial, sans-serif;
+  width: 100%;
+}
+
+.smart-margin-bottom-20 {
+  margin-bottom: 20px !important;
+}
+
+.btn {
+  font-family: "aileronthin" arial !important;
+  letter-spacing: 0.6px;
+  font-size: 16px;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -webkit-transition: border 0.25s linear, color 0.25s linear,
+    background-color 0.25s linear;
+  transition: border 0.25s linear, color 0.25s linear,
+    background-color 0.25s linear;
+}
+.btn-success {
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+.btn-success:hover {
+  color: #fff;
+  border: none;
+}
+.btn-danger {
+  color: #fff;
+  border: none;
+  border-radius: 0;
+}
+.btn-danger:hover {
+  color: #fff;
+  border: none;
+}
+.btn.btn-icon i {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+.btn-danger.btn-icon {
+  position: relative;
+  padding-right: 39px;
+  border: 0;
+}
+.btn-lg.btn-danger.btn-icon i {
+  background-color: #c9302c;
+  padding: 12px 13px;
+  font-size: 14px;
+}
+.btn-lg.btn-success.btn-icon {
+  position: relative;
+  padding-right: 39px;
+  border: 0;
+}
+.btn-lg.btn-success.btn-icon i {
+  background-color: #449d44;
+  padding: 12px 13px;
+  font-size: 14px;
+}
+.btn-lg.btn-warning.btn-icon {
+  position: relative;
+  padding-right: 39px;
+  border: 0;
+}
+.btn-sm.btn-danger.btn-icon i {
+  background-color: #b11b1b;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+.btn-sm.btn-success.btn-icon {
+  position: relative;
+  padding-right: 39px;
+  border: 0;
+}
+.btn-sm.btn-success.btn-icon i {
+  background-color: #007d3d;
+  padding: 7px 12px;
+  font-size: 14px;
+}
+.btn-xs.btn-danger.btn-icon i {
+  background-color: #b11b1b;
+  padding: 5px 14px;
+  font-size: 14px;
+}
+.btn-xs.btn-success.btn-icon {
+  position: relative;
+  padding-right: 39px;
+  border: 0;
+}
+.btn-xs.btn-success.btn-icon i {
+  background-color: #007d3d;
+  padding: 5px 14px;
+  font-size: 14px;
+}
+
+.footer {
+  background: rgba(17, 17, 17, 0.5);
+  padding-top: 25px;
+  padding-bottom: 0;
+  text-align: center;
+  color: #fff;
+}

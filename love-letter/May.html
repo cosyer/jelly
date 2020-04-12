@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>嗨，xxx小朋友</title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/font-awesome.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		<script src="js/snow.js"></script>
+		<style type="text/css">.snow-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:100001;}</style>
+		<div class="snow-container"></div> 
+
+		<div class="container">			
+			<header>
+				<h1>嗨，xxx小朋友
+					<h4> </h4>
+					<span>你愿意成为我的女朋友吗</span>
+				</h1>	
+			</header> 
+		</div>
+		<div class="content">
+			<div class="container">
+				<h2 class="text-center" style="color:rgba(255, 255, 255,0.8)">我给你两个选项</h2>
+				<div class="smart-body">
+					<h3 class="text-center" style="color:rgba(255, 255, 255,0.8)">仔细考虑哟</h3>
+					<div class="row">
+						<div class="col-xs-12 smart-margin-bottom-20">
+						  <button type="button" class="btn btn-block btn-lg btn-success btn-icon" id="ok">好呀<i class="fa fa-check"></i></button>
+						</div>
+						<div class="col-xs-12 smart-margin-bottom-20">
+						  <button type="button" class="btn btn-block btn-lg btn-danger btn-icon" id="no">丑拒<i class="fa fa-remove"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<div class="row">
+				<div class="twelve col">
+					<p>我只想守护你一生 <i style="color:red" class="fa fa-heart"></i></p>
+					<audio autoplay="autoplay" controls="controls" loop="loop" preload="auto" id="bgm" src="http://ip.h5.nc03.sycdn.kuwo.cn/69329e8376aae1be79a2879f2b51f886/5b762af0/resource/a3/49/40/378640591.aac"></audio>
+				    <p><i class="fa fa-coffee"></i> 本网页由Kucashu基于Bootstrap编写</p>
+				</br>
+				</div>
+			</div>
+		</footer>
+
+        <script>
+			var i=1;
+			var ok=false;
+			$(document).ready(function(){
+				$("#ok").click(function(){
+					alert("真的吗？你答应了？");
+					alert("给我发消息吧，爱你");
+                    window.location.replace("http://wpa.qq.com/msgrd?v=3&uin=203377325&site=qq&menu=yes");
+					$(".question").addClass('hide');
+					$("#success").removeClass('hide');
+					ok=true;
+					});
+				$("#no").click(function(){
+					switch(i){
+						case 1:
+							alert("支付宝你管");
+							break;
+						case 2:
+							alert("天天宠你");
+							break;
+						case 3:
+							alert("不和其它女孩子聊天");
+							break;
+						case 4:
+							alert("一生只爱你");
+							break;
+						case 5:
+							alert("我妈会游泳");
+							break;
+						case 6:
+							alert("不跟你吵架，会撒娇 会卖萌");
+							break;
+						case 7:
+							alert("满足你所有要求");
+							break;
+						case 8:
+							alert("改掉你不喜欢的毛病");
+							break;
+                      case 9:
+		   					alert("一生一世爱你");
+                        	break;
+						default:
+							alert("答应我吧");
+                        	break;
+					}
+					i++;
+				});
+			});
+		</script>  
+		<script src="js/jquery-1.11.1.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/jquery.slimscroll.js"></script>	
+	</body>
+</html>

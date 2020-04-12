@@ -157,3 +157,5 @@
 [**rectangular-rotating-loader-animation**：矩形旋转 loader 特效](https://cosyer.github.io/jelly/rectangular-rotating-loader-animation/)
 
 [**dynamic-border**：蛇形动态边框](https://cosyer.github.io/jelly/dynamic-border/)
+
+[**love-letter**：表白信](https://cosyer.github.io/jelly/love-letter/)
