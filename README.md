@@ -159,3 +159,5 @@
 [**dynamic-border**：蛇形动态边框](https://cosyer.github.io/jelly/dynamic-border/)
 
 [**love-letter**：表白信](https://cosyer.github.io/jelly/love-letter/)
+
+[**bad-wolf**：灰太狼版推箱子](https://cosyer.github.io/jelly/bad-wolf/)

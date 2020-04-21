@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <canvas id="c" width="800px" height="600px"></canvas>
+    <script
+      src="js/jquery-3.2.1.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script src="js/level.js"></script>
+    <script type="text/javascript">
+      // 初始化第一关的地图 1 代表围墙，2代表灰太狼，4代表小绵羊，8代表笼子。
+      var map = [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 8, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 4, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 2, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1],
+        [1, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+      ];
+
+      // 关卡信息动态获取
+      // var data;
+      // $.ajax({
+      // 		type: "GET",
+      // 		url: "mydata1.json",
+      // 		success: function (json) {
+      // 				 data = json.myarray;
+      // 			}
+      // })
+
+      // 此处采用死数据,datas数据是level.js中定义的数据
+      var data = datas.myarray;
+
+      var c = document.getElementById("c");
+      var ctx = c.getContext("2d");
+      var wi; // 灰太狼位置
+      var wj;
+      var score = 0; // 当前分数
+      var level = 1; // 当前关卡
+      var cage_num = 0;
+      var tree = new Image();
+      var wolf = new Image();
+      var cage = new Image();
+      var sheep = new Image();
+      gameinit();
+      function gameinit() {
+        tree.src = "img/tree.png";
+        tree.onload = function () {
+          for (var i = 0; i < map.length; i++) {
+            for (var j = 0; j < map[i].length; j++) {
+              //画树、
+              if (map[i][j] == 1) {
+                ctx.drawImage(tree, j * 50, i * 50, 50, 50);
+              }
+            }
+          }
+        };
+
+        wolf.src = "img/wolf-zm.png";
+        wolf.onload = function () {
+          for (var i = 0; i < map.length; i++) {
+            for (var j = 0; j < map[i].length; j++) {
+              //画狼
+              if (map[i][j] == 2) {
+                wi = i;
+                wj = j;
+                ctx.drawImage(wolf, j * 50, i * 50, 50, 50);
+              }
+            }
+          }
+        };
+
+        cage.src = "img/target.png";
+        cage.onload = function () {
+          for (var i = 0; i < map.length; i++) {
+            for (var j = 0; j < map[i].length; j++) {
+              //画笼子
+              if (map[i][j] == 8) {
+                cage_num++;
+                ctx.drawImage(cage, j * 50, i * 50, 50, 50);
+              }
+            }
+          }
+        };
+
+        sheep.src = "img/sheep-no.png";
+        sheep.onload = function () {
+          for (var i = 0; i < map.length; i++) {
+            for (var j = 0; j < map[i].length; j++) {
+              //画羊、
+              if (map[i][j] == 4) {
+                ctx.drawImage(sheep, j * 50, i * 50, 50, 50);
+              }
+            }
+          }
+        };
+      }
+
+      window.onkeydown = function () {
+        var keycode = event.keyCode;
+        console.log(keycode);
+        if (score >= cage_num) {
+          level++;
+          score = 0;
+          cage_num = 0;
+          ctx.clearRect(0, 0, 800, 600);
+          map = data[level].map;
+          gameinit();
+        } else {
+          switch (keycode) {
+            case 38: //按键：上
+            case 87: //按键：w
+              wolf.src = "img/wolf-sm.png";
+              if (map[wi - 1][wj] == 0) {
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50 - 50, 50, 50);
+                map[wi][wj] = 0;
+                map[wi - 1][wj] = 2;
+                wi = wi - 1;
+              } else if (map[wi - 1][wj] == 4 && map[wi - 2][wj] == 0) {
+                //羊往上走
+                ctx.clearRect(wj * 50, wi * 50 - 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50, wi * 50 - 100, 50, 50);
+                //狼往上走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50 - 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi - 1][wj] = 2;
+                map[wi - 2][wj] = 4;
+                wi = wi - 1;
+              } else if (map[wi - 1][wj] == 4 && map[wi - 2][wj] == 8) {
+                //羊往上走
+                ctx.clearRect(wj * 50, wi * 50 - 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50, wi * 50 - 100, 50, 50);
+                //狼往上走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50 - 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi - 1][wj] = 2;
+                map[wi - 2][wj] = 12;
+                wi = wi - 1;
+                score++;
+              } else {
+                // 走不动， 重新绘制（必须存在，否则在墙角等地方会有bug，尝试便知）
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50, 50, 50);
+              }
+
+              break;
+            case 40: //按键：下
+            case 83: //按键：S
+              wolf.src = "img/wolf-zm.png";
+              if (map[wi + 1][wj] == 0) {
+                console.log("2");
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50 + 50, 50, 50);
+                map[wi][wj] = 0;
+                map[wi + 1][wj] = 2;
+                wi = wi + 1;
+              } else if (map[wi + 1][wj] == 4 && map[wi + 2][wj] == 0) {
+                console.log("3");
+                //羊往下走
+                ctx.clearRect(wj * 50, wi * 50 + 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50, wi * 50 + 100, 50, 50);
+                //狼往下走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50 + 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi + 1][wj] = 2;
+                map[wi + 2][wj] = 4;
+                wi = wi + 1;
+              } else if (map[wi + 1][wj] == 4 && map[wi + 2][wj] == 8) {
+                console.log("4");
+                //羊往下走
+                ctx.clearRect(wj * 50, wi * 50 + 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50, wi * 50 + 100, 50, 50);
+                //狼往下走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50 + 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi + 1][wj] = 2;
+                map[wi + 2][wj] = 12;
+                wi = wi + 1;
+                score++;
+              } else {
+                // 走不动， 重新绘制（必须存在，否则在墙角等地方会有bug，尝试便知）
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50, 50, 50);
+              }
+              break;
+            case 37: //按键：左
+            case 65: //按键：A
+              wolf.src = "img/wolf-zb.png";
+              if (map[wi][wj - 1] == 0) {
+                console.log("2");
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50 - 50, wi * 50, 50, 50);
+                map[wi][wj] = 0;
+                map[wi][wj - 1] = 2;
+                wj = wj - 1;
+              } else if (map[wi][wj - 1] == 4 && map[wi][wj - 2] == 0) {
+                console.log("3");
+                //羊往左走
+                ctx.clearRect(wj * 50 - 50, wi * 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50 - 100, wi * 50, 50, 50);
+                //狼往左走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50 - 50, wi * 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi][wj - 1] = 2;
+                map[wi][wj - 2] = 4;
+                wj = wj - 1;
+              } else if (map[wi][wj - 1] == 4 && map[wi][wj - 2] == 8) {
+                console.log("4");
+                //羊往左走
+                ctx.clearRect(wj * 50 - 50, wi * 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50 - 100, wi * 50, 50, 50);
+                //狼往左走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50 - 50, wi * 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi][wj - 1] = 2;
+                map[wi][wj - 2] = 12;
+                wj = wj - 1;
+                score++;
+              } else {
+                // 走不动， 重新绘制（必须存在，否则在墙角等地方会有bug，尝试便知）
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50, 50, 50);
+              }
+              break;
+            case 39: //按键：D
+            case 68: //按键：右
+              wolf.src = "img/wolf-ym.png";
+              if (map[wi][wj + 1] == 0) {
+                console.log("2");
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50 + 50, wi * 50, 50, 50);
+                map[wi][wj] = 0;
+                map[wi][wj + 1] = 2;
+                wj = wj + 1;
+              } else if (map[wi][wj + 1] == 4 && map[wi][wj + 2] == 0) {
+                console.log("3");
+                //羊往左走
+                ctx.clearRect(wj * 50 + 50, wi * 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50 + 100, wi * 50, 50, 50);
+                //狼往左走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50 + 50, wi * 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi][wj + 1] = 2;
+                map[wi][wj + 2] = 4;
+                wj = wj + 1;
+              } else if (map[wi][wj + 1] == 4 && map[wi][wj + 2] == 8) {
+                console.log("4");
+
+                //羊往左走
+                ctx.clearRect(wj * 50 + 50, wi * 50, 50, 50);
+                ctx.drawImage(sheep, wj * 50 + 100, wi * 50, 50, 50);
+                //狼往左走
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50 + 50, wi * 50, 50, 50);
+                //变更数组
+                map[wi][wj] = 0;
+                map[wi][wj + 1] = 2;
+                map[wi][wj + 2] = 12;
+                wj = wj + 1;
+                score++;
+              } else {
+                // 走不动， 重新绘制（必须存在，否则在墙角等地方会有bug，尝试便知）
+                ctx.clearRect(wj * 50, wi * 50, 50, 50);
+                ctx.drawImage(wolf, wj * 50, wi * 50, 50, 50);
+              }
+              break;
+          }
+        }
+
+        if (score >= cage_num && cage_num != 0) {
+          ctx.font = "bolder 50px Arial";
+          ctx.fillStyle = "red";
+          ctx.fillText("YOU WIN!!!", 200, 200);
+          ctx.fillText("NEXT,GO!!!", 200, 300);
+        }
+      };
+    </script>
+  </body>
+</html>
