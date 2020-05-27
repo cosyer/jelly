@@ -162,4 +162,6 @@
 
 [**bad-wolf**：灰太狼版推箱子](https://cosyer.github.io/jelly/bad-wolf/)
 
-[**flappy-bird**：灰太狼版推箱子](https://cosyer.github.io/jelly/flappy-bird/)
+[**flappy-bird**：flappy-bird](https://cosyer.github.io/jelly/flappy-bird/)
+
+[**gobang**：五子棋](https://cosyer.github.io/jelly/gobang/)
