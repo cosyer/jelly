@@ -165,3 +165,5 @@
 [**flappy-bird**：flappy-bird](https://cosyer.github.io/jelly/flappy-bird/)
 
 [**gobang**：五子棋](https://cosyer.github.io/jelly/gobang/)
+
+[**text-overflow**：文本溢出](https://cosyer.github.io/jelly/text-overflow/)
