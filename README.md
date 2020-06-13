@@ -166,4 +166,6 @@
 
 [**gobang**：五子棋](https://cosyer.github.io/jelly/gobang/)
 
-[**tiangou**：五子棋](https://cosyer.github.io/jelly/tiangou/)
+[**text-overflow**：文本溢出](https://cosyer.github.io/jelly/text-overflow/)
+
+[**tiangou**：舔狗日记](https://cosyer.github.io/jelly/tiangou/)
