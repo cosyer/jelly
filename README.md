@@ -169,3 +169,5 @@
 [**text-overflow**：文本溢出](https://cosyer.github.io/jelly/text-overflow/)
 
 [**tiangou**：舔狗日记](https://cosyer.github.io/jelly/tiangou/)
+
+[**we-dog**：舔狗日记兄弟版](https://cosyer.github.io/jelly/we-dog/)
