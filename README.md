@@ -171,3 +171,5 @@
 [**tiangou**：舔狗日记](https://cosyer.github.io/jelly/tiangou/)
 
 [**we-dog**：舔狗日记兄弟版](https://cosyer.github.io/jelly/we-dog/)
+
+[**baby-name-maker**：宝宝起名神器](https://cosyer.github.io/jelly/baby-name-maker/)

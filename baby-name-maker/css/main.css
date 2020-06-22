@@ -1,0 +1,114 @@
+body {
+  background: #dbf5ff;
+}
+h1 {
+  padding: 20px 0;
+  text-align: center;
+}
+h1 strong {
+  display: block;
+  font-size: 40px;
+}
+.item {
+  text-align: center;
+  margin: 10px auto;
+  width: 324px;
+}
+input {
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  background: #fff;
+  border: 1px solid #ee828c;
+  border-radius: 0;
+  text-align: center;
+  font-size: 24px;
+  float: left;
+  vertical-align: middle;
+}
+button {
+  width: 120px;
+  height: 42px;
+  line-height: 42px;
+  border: 0;
+  text-align: center;
+  background: #ee828c;
+  font-size: 18px;
+  color: #fff;
+  float: left;
+  vertical-align: middle;
+}
+button:hover {
+  background: #d76771;
+}
+
+.copyright {
+  text-align: center;
+  clear: both;
+  margin: 150px 20px 0 20px;
+  border-top: 1px solid #e4ebee;
+  color: #7e6047;
+  padding: 10px;
+}
+
+.alert {
+  width: 400px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -230px;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  z-index: 10;
+  display: none;
+}
+.alert p {
+  padding-top: 350px;
+  padding-bottom: 50px;
+  background: url(../img/cry.png) no-repeat center 50px;
+}
+.alert span {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  background: #fff;
+}
+.black {
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: #000 url(../img/loading.gif) no-repeat center center;
+  opacity: 0.75;
+}
+
+@media all and (max-width: 400px) {
+  h1 img {
+    width: 90%;
+  }
+  input {
+    width: 208px;
+  }
+  button {
+    width: 88px;
+  }
+  .item {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .alert {
+    width: 300px;
+    margin-left: -150px;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .copyright div {
+    display: none;
+  }
+}
