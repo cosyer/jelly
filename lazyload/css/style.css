@@ -1,0 +1,25 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+#view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lazy-image {
+  background: url("../img/loading.gif") no-repeat center;
+}
+
+img {
+  margin-top: 100px;
+  background-size: cover;
+  background-position: center;
+  width: 490px;
+  height: 242px;
+}

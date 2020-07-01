@@ -179,3 +179,5 @@
 [**grail-layout**：圣杯布局](https://cosyer.github.io/jelly/grail-layout/)
 
 [**random-face**：随机生成SVG面孔（头像）](https://cosyer.github.io/jelly/random-face/)
+
+[**lazyload**：图片懒加载](https://cosyer.github.io/jelly/lazyload/)
