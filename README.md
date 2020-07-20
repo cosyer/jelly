@@ -181,3 +181,5 @@
 [**random-face**：随机生成SVG面孔（头像）](https://cosyer.github.io/jelly/random-face/)
 
 [**lazyload**：图片懒加载](https://cosyer.github.io/jelly/lazyload/)
+
+[**3Dsnow**：3D雪花](https://cosyer.github.io/jelly/3Dsnow/)

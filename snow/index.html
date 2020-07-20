@@ -1,26 +1,66 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>snow</title>
-<link rel="stylesheet" type="text/css" href="css/default.css">
-</head>
-<body>
-<div class="snow-container">
-  <div class="snow foreground"></div>
-  <div class="snow foreground layered"></div>
-  <div class="snow middleground"></div>
-  <div class="snow middleground layered"></div>
-  <div class="snow background"></div>
-  <div class="snow background layered"></div>
-</div>
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<!--下雪-->
-<script>
-(function($){$.fn.snow=function(options){var $flake=$('<div id="flake" />').css({'position':'absolute','top':'-50px'}).html('&#10052;'),documentHeight=$(document).height(),documentWidth=$(document).width(),defaults={minSize:10,maxSize:20,newOn:500,flakeColor:"#FFFFFF"},options=$.extend({},defaults,options);var interval=setInterval(function(){var startPositionLeft=Math.random()*documentWidth-100,startOpacity=0.5+Math.random(),sizeFlake=options.minSize+Math.random()*options.maxSize,endPositionTop=documentHeight-40,endPositionLeft=startPositionLeft-100+Math.random()*200,durationFall=documentHeight*10+Math.random()*5000;$flake.clone().appendTo('body').css({left:startPositionLeft,opacity:startOpacity,'font-size':sizeFlake,color:options.flakeColor}).animate({top:endPositionTop,left:endPositionLeft,opacity:0.2},durationFall,'linear',function(){$(this).remove()});},options.newOn);};})(jQuery);
-$.fn.snow({ minSize: 5, maxSize: 50, newOn: 1000, flakeColor: '#FFF' });
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>snow</title>
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+  </head>
+  <body>
+    <div class="snow-container">
+      <div class="snow foreground"></div>
+      <div class="snow foreground layered"></div>
+      <div class="snow middleground"></div>
+      <div class="snow middleground layered"></div>
+      <div class="snow background"></div>
+      <div class="snow background layered"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <!--下雪-->
+    <script>
+      (function ($) {
+        $.fn.snow = function (options) {
+          var $flake = $('<div id="flake" />')
+              .css({ position: "absolute", top: "-50px" })
+              .html("&#10052;"),
+            documentHeight = $(document).height(),
+            documentWidth = $(document).width(),
+            defaults = {
+              minSize: 10,
+              maxSize: 20,
+              newOn: 500,
+              flakeColor: "#FFFFFF",
+            },
+            options = $.extend({}, defaults, options);
+          var interval = setInterval(function () {
+            var startPositionLeft = Math.random() * documentWidth - 100,
+              startOpacity = 0.5 + Math.random(),
+              sizeFlake = options.minSize + Math.random() * options.maxSize,
+              endPositionTop = documentHeight - 40,
+              endPositionLeft = startPositionLeft - 100 + Math.random() * 200,
+              durationFall = documentHeight * 10 + Math.random() * 5000;
+            $flake
+              .clone()
+              .appendTo("body")
+              .css({
+                left: startPositionLeft,
+                opacity: startOpacity,
+                "font-size": sizeFlake,
+                color: options.flakeColor,
+              })
+              .animate(
+                { top: endPositionTop, left: endPositionLeft, opacity: 0.2 },
+                durationFall,
+                "linear",
+                function () {
+                  $(this).remove();
+                }
+              );
+          }, options.newOn);
+        };
+      })(jQuery);
+      $.fn.snow({ minSize: 5, maxSize: 50, newOn: 1000, flakeColor: "#FFF" });
+    </script>
+  </body>
 </html>
