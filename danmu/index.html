@@ -1,0 +1,51 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<meta name="referrer" content="never">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />  
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+<html lang="zh-CN">
+<head>
+<meta>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>弹幕</title>
+<style>
+.main{
+	height:720px;
+	width:1280px;
+top:20px;
+padding:0 auto;
+margin:0 auto;
+display:block;
+color:#FFF;
+background-color:#333;
+}
+</style>
+</head>
+<body>
+<div class='main' id='main'>
+<img src='https://ww2.sinaimg.cn/large/ed039e1fgy1fr200vivszj21hc0u0n2r' style="height:100%;"></img>
+</div>
+<p>&nbsp;</p>
+<button type='button' onclick='addgun()' value='添加滚动弹幕'>添加滚动弹幕</button>&nbsp;<button type='button' onclick='addtop()' value='添加顶端弹幕' />添加顶端弹幕</button>&nbsp;<button type='button' onclick='addbottom()' value='添加底端弹幕' />添加底端弹幕</button>&nbsp;<button type='button' onclick='pause()' value='' />THE WORLD!</button>&nbsp;<button type='button' onclick='start()' value='' />继续运行</button>
+<script src="danmu.js"></script>
+<script>
+function addgun(){
+	createdm('main','啊~这光,啊~这水！！','red','auto','normal');
+}
+function addtop(){
+createdm('main','2333333333333333','blue','auto','top');
+}
+function addbottom(){
+	createdm('main','我好兴奋啊~~！','#333','auto','bottom');
+}
+function pause(){
+	theworld();
+}
+function start(){
+	continuedm();
+}
+</script>
+</body>
+</html>
