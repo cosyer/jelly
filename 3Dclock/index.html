@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <title>3D时钟</title>
+  <link rel="stylesheet" href="index.css"></link>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Oswald:700");
+    html, body {
+      background: #222;
+    }
+
+    html {
+      height: 100%;
+      display: -webkit-box;
+      display: flex;
+    }
+
+    body {
+      margin: auto;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .clock {
+      --time-offset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(34, 34, 34, 0.8);
+      text-align: center;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+              align-items: center;
+      height: 6em;
+      color: #F1F1F1;
+      font-family: monospace;
+      font-size: 8vmin;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.1em;
+      -webkit-perspective: 500px;
+              perspective: 500px;
+      --h1: 1;
+      --h2: 2;
+      --m1: 3;
+      --m2: 4;
+      --s1: 5;
+      --s2: 6;
+    }
+    .clock, .clock:before,
+    .clock * {
+      box-sizing: border-box;
+      -webkit-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+    }
+    .clock:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, rgba(34, 34, 34, 0.9)), color-stop(transparent), color-stop(transparent), color-stop(80%, rgba(34, 34, 34, 0.9)));
+      background: linear-gradient(to bottom, rgba(34, 34, 34, 0.9) 20%, transparent calc(50% - .4ch), transparent calc(50% + .4ch), rgba(34, 34, 34, 0.9) 80%);
+      -webkit-transform: translateZ(2.6em);
+              transform: translateZ(2.6em);
+    }
+
+    .colon {
+      display: inline-block;
+      opacity: 0.8;
+      -webkit-transform: translateZ(2.5em);
+              transform: translateZ(2.5em);
+      width: 1ch;
+      margin: 0;
+      text-align: center;
+    }
+
+    .cog {
+      position: relative;
+      width: 1ch;
+      height: 1ch;
+      margin: -.25ch .1ch 0;
+      display: inline-block;
+      -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+      transition: -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.6, 1), -webkit-transform 0.3s cubic-bezier(0.4, 0, 0.6, 1);
+      -webkit-transform: rotateX(calc(  -1turn *  (var(--unit) / var(--char-total)) ));
+              transform: rotateX(calc(  -1turn *  (var(--unit) / var(--char-total)) ));
+    }
+    .cog .word,
+    .cog .char {
+      position: absolute;
+      top: 0%;
+      left: 0%;
+      width: 1ch;
+      height: 1ch;
+    }
+    .cog .char {
+      -webkit-transform: rotateX(calc( 4deg + (360deg * var(--char-percent) ))) translateZ(2.5em);
+              transform: rotateX(calc( 4deg + (360deg * var(--char-percent) ))) translateZ(2.5em);
+    }
+
+    .tens {
+      text-align: right;
+    }
+
+    .hours.tens {
+      --unit: var(--h1);
+    }
+
+    .hours {
+      --unit: var(--h2);
+    }
+
+    .minutes.tens {
+      --unit: var(--m1);
+    }
+
+    .minutes {
+      --unit: var(--m2);
+    }
+
+    .seconds.tens {
+      --unit: var(--s1);
+    }
+
+    .seconds {
+      --unit: var(--s2);
+    }
+  </style>  
+</head>
+<body>
+  <div class="clock">
+    <span class="cog hours tens" data-splitting>0123456789</span>
+    <span class="cog hours" data-splitting>0123456789</span>
+    <span class="colon">:</span>
+    <span class="cog minutes tens" data-splitting>0123456789</span>
+    <span class="cog minutes" data-splitting>0123456789</span>
+    <span class="colon">:</span>
+    <span class="cog seconds tens" data-splitting>0123456789</span>
+    <span class="cog seconds" data-splitting>0123456789</span>
+  </div>
+
+  <script type="text/javascript" src="https://unpkg.com/splitting@next/dist/splitting.js"></script>
+
+  <script type="text/javascript">
+    console.clear();
+    Splitting();
+
+    var clock = document.querySelector('.clock');
+
+    /* We need zero-led values to help with the tens columns, and to allow for better looping around when reaching '9' */
+    function leadingZeroString(n){
+      return ('0' + n).slice(-2); 
+    }
+
+    function updateTime(){
+      var d = new Date();
+      var h = leadingZeroString(d.getHours());
+      var m = leadingZeroString(d.getMinutes());
+      var s = leadingZeroString(d.getSeconds());
+      
+      clock.style.setProperty('--h1', h[0]);
+      clock.style.setProperty('--h2', h);
+      clock.style.setProperty('--m1', m[0]);
+      clock.style.setProperty('--m2', m);
+      clock.style.setProperty('--s1', s[0]);
+      clock.style.setProperty('--s2', s); 
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
