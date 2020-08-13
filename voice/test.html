@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>测试</title>
+    <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <label>提示</label>
+    <div id="msg"></div>
+    <label>搜索</label><input type="" id="result" />
+    <button id="btn_start" onclick="recordStart()">点击语音输入</button>
+    <button id="btn_stop" disabled="true" onclick="stopStart()">
+      停止输入
+    </button>
+    <script type="text/javascript">
+      function call(method, params) {
+        window.frames[0].postMessage(
+          { method: method, params: params },
+          "https://recording.aminfo.com.cn"
+        );
+      }
+      window.addEventListener(
+        "message",
+        function (e) {
+          if (e.data) {
+            console.log(e.data);
+            if (e.data.method == "msg") {
+              $("#msg").html(e.data.msg);
+            }
+            if (e.data.method == "result") {
+              $("#result").val(e.data.result);
+            }
+          }
+        },
+        false
+      );
+      function recordStart() {
+        call("play", {});
+        $("#btn_start").attr("disabled", true);
+        $("#btn_stop").attr("disabled", false);
+      }
+      function stopStart() {
+        call("play", {});
+        $("#btn_start").attr("disabled", false);
+        $("#btn_stop").attr("disabled", true);
+      }
+    </script>
+    <div style="width: 0px; height: 0px; display: none;">
+      <iframe
+        id="record_iframe"
+        style="width: 0; height: 0;"
+        src="https://recording.aminfo.com.cn"
+      ></iframe>
+    </div>
+  </body>
+</html>

@@ -189,3 +189,7 @@
 [**danmu**：弹幕](https://cosyer.github.io/jelly/danmu/)
 
 [**3Dclock**：3D时钟](https://cosyer.github.io/jelly/3Dclock/)
+
+[**voice**：语音识别](https://cosyer.github.io/jelly/voice/)
+
+[**flex**：flex练习](https://cosyer.github.io/jelly/flex/)
