@@ -193,3 +193,5 @@
 [**voice**：语音识别](https://cosyer.github.io/jelly/voice/)
 
 [**flex**：flex练习](https://cosyer.github.io/jelly/flex/)
+
+[**valentine**：n多年的慕课网七夕动画](https://cosyer.github.io/jelly/valentine/)
