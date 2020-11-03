@@ -1,0 +1,160 @@
+body{
+	padding: 0;
+	margin: 0;
+}
+.mineSum,.flagNum{
+	left: 50%;
+	position: relative;
+	color:#999;
+	width:500px;
+	font-family: 微软雅黑;
+}
+h2 span{
+	padding: 0 10px;
+	color:#f93;
+}
+.mineBox{
+	float: left;
+	position: relative;
+	box-shadow: 0 0 0px 1px #ccc;
+}
+.mineBox:hover{
+	z-index: 1;
+	box-shadow: 0 0 6px 3px #fff;
+}
+.front,.back{
+	position: absolute;
+	width:100%;
+	height: 100%;
+	backface-visibility: hidden;
+	transition:all ease 0.5s;
+	color:#fff;
+	text-align: center;
+	line-height: 40px;
+	font-family: "impact";
+}
+.front{
+	background: #999;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+}
+.back{
+	background: #efefef;
+	transform: rotateY(180deg);
+	
+}
+.container{
+	left:50%;
+	top:140px;
+	position: absolute;
+	transform-style: preserve-3d;
+	border:15px solid #ccc;
+}
+
+.model{
+	position: absolute;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.5)
+}
+.model div,.input{
+	position: absolute;
+	width:230px;
+	height: 127px;
+	margin-left:-100px;
+	left: 50%;
+	top:50%;
+	margin-top:-60px;
+	background: #f93;
+	text-align: center;
+	font-family: 微软雅黑;
+}
+/* model配置 */
+	.model h2{
+		color:#fff;
+	}
+	.model button{
+		border:none;
+		background: #fff;
+		width:90px;
+		height: 30px;
+		font-size: 1em;
+		font-weight: 700;
+		font-family: 微软雅黑;
+		color:#f93;
+	}
+	.model button:focus{
+		outline: none;
+	}
+	.model button:hover{
+		box-shadow: 0 0 10px #fff;
+	}
+/* input 配置*/
+	.input-model{
+		background: #ccc;
+	}
+	.input-model .input{
+		width:260px;
+		height: 175px;
+		box-shadow: 0 0 10px #333;
+		background: #fff;
+	}
+	.input-model .input p{
+		height: 30px;
+		line-height: 30px;
+	}
+	input{
+		width:50px;
+		border:none;
+		height: 18px;
+		position: relative;
+		top:-5px;
+		background: transparent;
+		border-bottom:1px solid #000;
+		text-align: center;
+		color:#f93;
+	}
+	input:focus{
+		outline: none;
+	}
+	img{
+		width:40px;
+		height: 40px;
+	}
+	.input button{
+		border:none;
+		margin-top: 10px;
+		background: #666;
+		width:90px;
+		height: 30px;
+		font-size: 1em;
+		font-weight: 700;
+		font-family: 微软雅黑;
+		color:#fff;
+	}
+.mineNum1{
+	color:#f93;
+}
+.mineNum2{
+	color:#8c4;
+}
+.mineNum3{
+	color:#665;
+}
+.mineNum4{
+	color:#ab3;
+}
+.mineNum5{
+	color:#f93;
+}
+.mineNum6{
+	color:#38f;
+}
+.mineNum7{
+	color:#ee3;
+}
+.mineNum8{
+	color:#000;
+}
