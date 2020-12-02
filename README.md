@@ -12,7 +12,7 @@
 
 [**carousel**：原生轮播图。](https://cosyer.github.io/jelly/carousel/) index2.html
 
-[**clock**：用canvas画的时钟，可以显示当前时间。](https://cosyer.github.io/jelly/clock/)
+[**clock**：用canvas画的时钟，可以显示当前时间。](https://cosyer.github.io/jelly/clock/) clock/clock2
 
 [**cssheart**：用canvas画的心，虽然没什么用。](https://cosyer.github.io/jelly/cssheart/)
 

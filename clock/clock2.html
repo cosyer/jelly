@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: #0d1320;
+            overflow: hidden;
+        }
+        #timer{
+            text-align: center;
+            font-size:56vh;
+            font-weight: bold;
+            line-height: 56vh;
+            color:#e2ecfd;
+        }
+        #date{
+            margin-top:0px;
+            text-align: center;
+            font-size:28vh;
+            font-weight: bold;
+            color:#e2ecfd;
+        }
+        .about{
+            width:600px;
+            margin:0 auto;
+            padding-top:20px;
+            display: flex;
+            align-items : center;
+            
+        }
+        .about .item{
+            color:white;
+            flex:1;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="about">
+        <div class="item">
+            <a target="_blank">
+                <img style="height:40px;" src="./img/juejin.svg" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a target="_blank">
+                <img style="height:35px;" src="./img/bili.svg" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a target="_blank">
+                <img src="./img/zhihu.svg" alt="">
+            </a>
+        </div>
+        <div class="item">
+            <a target="_blank">
+                <img style="height:20px;" src="./img/github.svg" alt="">
+            </a>
+        </div>
+    
+    </div>
+    <div id="date">00月00日</div>
+    <div id="timer">06:12</div>
+
+    <script>
+        let showSymbl = true
+        function clock(){
+            let now = new Date()
+            let hour = now.getHours()+''
+            let minute = now.getMinutes() + ''
+            let month = (now.getMonth()+1)+''
+            let day = now.getDate()+''
+            if(showSymbl){
+                document.getElementById('timer').innerHTML = `${hour.padStart(2,'0')}<span>:</span>${minute.padStart(2,'0')}`
+
+            }else{
+                document.getElementById('timer').innerHTML = `${hour.padStart(2,'0')}<span style="color:#0d1320">:</span>${minute.padStart(2,'0')}`
+            }
+            document.getElementById('date').innerHTML = `${month.padStart(2,'0')}月${day.padStart(2,'0')}日`
+
+            showSymbl = !showSymbl
+        }
+        clock()
+        setInterval(()=>{
+            clock()
+        },1000)
+    </script>    
+</body>
+</html>
