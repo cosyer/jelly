@@ -199,3 +199,5 @@
 [**clear-mine**：扫雷](https://cosyer.github.io/jelly/clear-mine/)
 
 [**charge**：B站充电效果](https://cosyer.github.io/jelly/charge/)
+
+[**bilibili-autumn-banner**：B站秋季Banner](https://cosyer.github.io/jelly/bilibili-autumn-banner/)
